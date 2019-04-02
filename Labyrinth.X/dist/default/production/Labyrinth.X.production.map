@@ -62,21 +62,21 @@ xc16-ld 1.36 (A)
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x19a           0x267  (615)
-.const                       0x29a                0x30            0x48  (72)
-.text                        0x2ca               0x3ca           0x5af  (1455)
-.dinit                       0x694                 0x8             0xc  (12)
+.text                        0x100               0x194           0x25e  (606)
+.const                       0x294                0x22            0x33  (51)
+.text                        0x2b6               0x3e2           0x5d3  (1491)
+.dinit                       0x698                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x86a  (2154) 4%
+                 Total "program" memory used (bytes):          0x870  (2160) 4%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0xe  (14)
+.nbss                        0x800                   0             0xc  (12)
 
-                 Total "data" memory used (bytes):            0xe  (14) <1%
+                 Total "data" memory used (bytes):            0xc  (12) <1%
 
 
 Dynamic Memory Usage
@@ -84,9 +84,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x80e                               0x7f2  (2034)
+stack                        0x80c                               0x7f4  (2036)
 
-                 Maximum dynamic memory (bytes):          0x7f2  (2034)
+                 Maximum dynamic memory (bytes):          0x7f4  (2036)
 
 
 External Symbols in Data Memory (by address):
@@ -96,112 +96,120 @@ External Symbols in Data Memory (by address):
                     0x0802                  _broj1
                     0x0804                  _broj2
                     0x0806                  _timer_ms
-                    0x0808                  _timer_us
-                    0x080a                  _delay_ms
-                    0x080c                  _delay_us
+                    0x0808                  _delay_ms
+                    0x080a                  _timer_interrupt_us
 
 External Symbols in Data Memory (by name):
 
                     0x0802                  _broj1
                     0x0804                  _broj2
-                    0x080a                  _delay_ms
-                    0x080c                  _delay_us
+                    0x0808                  _delay_ms
                     0x0800                  _tempRX
                     0x0801                  _tempRX2
+                    0x080a                  _timer_interrupt_us
                     0x0806                  _timer_ms
-                    0x0808                  _timer_us
 
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init_standard
                   0x000152                  __data_init
+                  0x000152                  __data_init_standard
                   0x0001c8                  __T1Interrupt
-                  0x0001fe                  __T2Interrupt
-                  0x000214                  __T3Interrupt
-                  0x00022a                  __T4Interrupt
-                  0x000260                  __U1RXInterrupt
-                  0x00027a                  __U2RXInterrupt
-                  0x000294                  __DefaultInterrupt
-                  0x0002ca                  _initUART1
-                  0x0002e4                  _WriteUART1_char
-                  0x00030c                  _WriteUART1_int
-                  0x000378                  _WriteUART1_string
-                  0x000394                  _initUART2
-                  0x0003ac                  _WriteUART2_char
-                  0x0003c4                  _WriteUART2_int
-                  0x000430                  _WriteUART2_string
-                  0x00044c                  _mot1_init_pwm
-                  0x000468                  _mot2_init_pwm
-                  0x000484                  _mot1_set_pwm
-                  0x000490                  _mot2_set_pwm
-                  0x00049c                  _init_motor
-                  0x0004b2                  _set_turbo
-                  0x0004c4                  _set_right
-                  0x0004d6                  _set_left
-                  0x0004e8                  _set_backward
-                  0x0004fa                  _set_forward
-                  0x00050c                  _set_stop
-                  0x000522                  _init_forward_sensor
-                  0x000532                  _init_left_sensor
-                  0x000542                  _get_forward_cm
-                  0x000584                  _get_left_cm
-                  0x0005ce                  _Init_T1
-                  0x0005ea                  _Delay_us
-                  0x0005fc                  _reset_timer_us
-                  0x000606                  _read_timer_us
-                  0x00060e                  _Init_T4
-                  0x000624                  _Delay_ms
-                  0x000636                  _reset_timer_ms
-                  0x000640                  _read_timer_ms
+                  0x0001e2                  __T2Interrupt
+                  0x0001f8                  __T3Interrupt
+                  0x00020e                  __T4Interrupt
+                  0x000244                  __T5Interrupt
+                  0x00025a                  __U1RXInterrupt
+                  0x000274                  __U2RXInterrupt
+                  0x00028e                  __DefaultInterrupt
+                  0x0002b6                  _initUART1
+                  0x0002d0                  _WriteUART1_char
+                  0x0002f8                  _WriteUART1_int
+                  0x000364                  _WriteUART1_string
+                  0x000380                  _initUART2
+                  0x000398                  _WriteUART2_char
+                  0x0003b0                  _WriteUART2_int
+                  0x00041c                  _WriteUART2_string
+                  0x000438                  _mot1_init_pwm
+                  0x000454                  _mot2_init_pwm
+                  0x000470                  _mot1_set_pwm
+                  0x00047c                  _mot2_set_pwm
+                  0x000488                  _init_motor
+                  0x00049e                  _set_turbo
+                  0x0004b0                  _set_right
+                  0x0004c2                  _set_left
+                  0x0004d4                  _set_backward
+                  0x0004e6                  _set_forward
+                  0x0004f8                  _set_stop
+                  0x00050e                  _Init_T1
+                  0x000524                  _Delay_us
+                  0x00053e                  _reset_timer_us
+                  0x000548                  _start_timer_us
+                  0x000550                  _stop_timer_us
+                  0x000558                  _set_timer_interrupt_us
+                  0x00056a                  _start_measuring_time_us
+                  0x000578                  _return_time_measurement_us
+                  0x000588                  _Init_T4
+                  0x0005a0                  _Delay_ms
+                  0x0005b6                  _reset_timer_ms
+                  0x0005c0                  _read_timer_ms
+                  0x0005c8                  _init_forward_sensor
+                  0x0005d8                  _init_left_sensor
+                  0x0005e8                  _get_forward_cm
+                  0x000618                  _get_left_cm
                   0x000648                  _main
 
 External Symbols in Program Memory (by name):
 
-                  0x000624                  _Delay_ms
-                  0x0005ea                  _Delay_us
-                  0x0005ce                  _Init_T1
-                  0x00060e                  _Init_T4
-                  0x0002e4                  _WriteUART1_char
-                  0x00030c                  _WriteUART1_int
-                  0x000378                  _WriteUART1_string
-                  0x0003ac                  _WriteUART2_char
-                  0x0003c4                  _WriteUART2_int
-                  0x000430                  _WriteUART2_string
-                  0x000294                  __DefaultInterrupt
+                  0x0005a0                  _Delay_ms
+                  0x000524                  _Delay_us
+                  0x00050e                  _Init_T1
+                  0x000588                  _Init_T4
+                  0x0002d0                  _WriteUART1_char
+                  0x0002f8                  _WriteUART1_int
+                  0x000364                  _WriteUART1_string
+                  0x000398                  _WriteUART2_char
+                  0x0003b0                  _WriteUART2_int
+                  0x00041c                  _WriteUART2_string
+                  0x00028e                  __DefaultInterrupt
                   0x0001c8                  __T1Interrupt
-                  0x0001fe                  __T2Interrupt
-                  0x000214                  __T3Interrupt
-                  0x00022a                  __T4Interrupt
-                  0x000260                  __U1RXInterrupt
-                  0x00027a                  __U2RXInterrupt
+                  0x0001e2                  __T2Interrupt
+                  0x0001f8                  __T3Interrupt
+                  0x00020e                  __T4Interrupt
+                  0x000244                  __T5Interrupt
+                  0x00025a                  __U1RXInterrupt
+                  0x000274                  __U2RXInterrupt
                   0x000152                  __data_init
                   0x000152                  __data_init_standard
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000542                  _get_forward_cm
-                  0x000584                  _get_left_cm
-                  0x0002ca                  _initUART1
-                  0x000394                  _initUART2
-                  0x000522                  _init_forward_sensor
-                  0x000532                  _init_left_sensor
-                  0x00049c                  _init_motor
+                  0x0005e8                  _get_forward_cm
+                  0x000618                  _get_left_cm
+                  0x0002b6                  _initUART1
+                  0x000380                  _initUART2
+                  0x0005c8                  _init_forward_sensor
+                  0x0005d8                  _init_left_sensor
+                  0x000488                  _init_motor
                   0x000648                  _main
-                  0x00044c                  _mot1_init_pwm
-                  0x000484                  _mot1_set_pwm
-                  0x000468                  _mot2_init_pwm
-                  0x000490                  _mot2_set_pwm
-                  0x000640                  _read_timer_ms
-                  0x000606                  _read_timer_us
-                  0x000636                  _reset_timer_ms
-                  0x0005fc                  _reset_timer_us
-                  0x0004e8                  _set_backward
-                  0x0004fa                  _set_forward
-                  0x0004d6                  _set_left
-                  0x0004c4                  _set_right
-                  0x00050c                  _set_stop
-                  0x0004b2                  _set_turbo
+                  0x000438                  _mot1_init_pwm
+                  0x000470                  _mot1_set_pwm
+                  0x000454                  _mot2_init_pwm
+                  0x00047c                  _mot2_set_pwm
+                  0x0005c0                  _read_timer_ms
+                  0x0005b6                  _reset_timer_ms
+                  0x00053e                  _reset_timer_us
+                  0x000578                  _return_time_measurement_us
+                  0x0004d4                  _set_backward
+                  0x0004e6                  _set_forward
+                  0x0004c2                  _set_left
+                  0x0004b0                  _set_right
+                  0x0004f8                  _set_stop
+                  0x000558                  _set_timer_interrupt_us
+                  0x00049e                  _set_turbo
+                  0x00056a                  _start_measuring_time_us
+                  0x000548                  _start_timer_us
+                  0x000550                  _stop_timer_us
 
 Memory Configuration
 
@@ -262,7 +270,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x19a
+.text             0x000100        0x194
  *(.init)
  .init            0x000100         0x4c c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
                   0x000100                  __resetPRI
@@ -274,23 +282,24 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x0001c8         0xcc build/default/production/main.o
+ .isr.text        0x0001c8         0xc6 build/default/production/main.o
                   0x0001c8                  __T1Interrupt
-                  0x0001fe                  __T2Interrupt
-                  0x000214                  __T3Interrupt
-                  0x00022a                  __T4Interrupt
-                  0x000260                  __U1RXInterrupt
-                  0x00027a                  __U2RXInterrupt
- .isr             0x000294          0x4 default_isr
-                  0x000294                  __DefaultInterrupt
+                  0x0001e2                  __T2Interrupt
+                  0x0001f8                  __T3Interrupt
+                  0x00020e                  __T4Interrupt
+                  0x000244                  __T5Interrupt
+                  0x00025a                  __U1RXInterrupt
+                  0x000274                  __U2RXInterrupt
+ .isr             0x00028e          0x4 default_isr
+                  0x00028e                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000298          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
-                  0x000298                  __crt_start_mode
-                  0x000298                  __crt_start_mode_normal
+                  0x000292          0x2 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
+                  0x000292                  __crt_start_mode
+                  0x000292                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -339,46 +348,46 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2fb2
+.debug_info       0x000000       0x307a
  *(.debug_info)
- .debug_info      0x000000        0x6ac build/default/production/main.o
- .debug_info      0x0006ac        0xb35 build/default/production/uart.o
- .debug_info      0x0011e1        0xc0c build/default/production/motor.o
- .debug_info      0x001ded        0xabc build/default/production/timer.o
- .debug_info      0x0028a9        0x709 build/default/production/sensor.o
+ .debug_info      0x000000        0x6c7 build/default/production/main.o
+ .debug_info      0x0006c7        0xb35 build/default/production/uart.o
+ .debug_info      0x0011fc        0xc0c build/default/production/motor.o
+ .debug_info      0x001e08        0xb69 build/default/production/timer.o
+ .debug_info      0x002971        0x709 build/default/production/sensor.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x4c3
+.debug_abbrev     0x000000        0x4fc
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x107 build/default/production/main.o
  .debug_abbrev    0x000107        0x10a build/default/production/uart.o
  .debug_abbrev    0x000211         0xfe build/default/production/motor.o
- .debug_abbrev    0x00030f        0x113 build/default/production/timer.o
- .debug_abbrev    0x000422         0xa1 build/default/production/sensor.o
+ .debug_abbrev    0x00030f        0x14c build/default/production/timer.o
+ .debug_abbrev    0x00045b         0xa1 build/default/production/sensor.o
 
-.debug_line       0x000000        0x566
+.debug_line       0x000000        0x578
  *(.debug_line)
- .debug_line      0x000000        0x121 build/default/production/main.o
- .debug_line      0x000121        0x115 build/default/production/uart.o
- .debug_line      0x000236        0x125 build/default/production/motor.o
- .debug_line      0x00035b        0x103 build/default/production/timer.o
- .debug_line      0x00045e        0x108 build/default/production/sensor.o
+ .debug_line      0x000000        0x125 build/default/production/main.o
+ .debug_line      0x000125        0x115 build/default/production/uart.o
+ .debug_line      0x00023a        0x125 build/default/production/motor.o
+ .debug_line      0x00035f        0x11b build/default/production/timer.o
+ .debug_line      0x00047a         0xfe build/default/production/sensor.o
 
-.debug_frame      0x000000        0x4ca
+.debug_frame      0x000000        0x556
  *(.debug_frame)
- .debug_frame     0x000000        0x110 build/default/production/main.o
- .debug_frame     0x000110         0xfa build/default/production/uart.o
- .debug_frame     0x00020a        0x148 build/default/production/motor.o
- .debug_frame     0x000352         0xf4 build/default/production/timer.o
- .debug_frame     0x000446         0x84 build/default/production/sensor.o
+ .debug_frame     0x000000        0x12c build/default/production/main.o
+ .debug_frame     0x00012c         0xfa build/default/production/uart.o
+ .debug_frame     0x000226        0x148 build/default/production/motor.o
+ .debug_frame     0x00036e        0x164 build/default/production/timer.o
+ .debug_frame     0x0004d2         0x84 build/default/production/sensor.o
 
-.debug_str        0x000000        0x145
+.debug_str        0x000000        0x147
  *(.debug_str)
- .debug_str       0x000000         0x36 build/default/production/main.o
- .debug_str       0x000036         0x3c build/default/production/uart.o
- .debug_str       0x000072         0x4f build/default/production/motor.o
- .debug_str       0x0000c1         0x5c build/default/production/timer.o
- .debug_str       0x00011d         0x28 build/default/production/sensor.o
+ .debug_str       0x000000         0x37 build/default/production/main.o
+ .debug_str       0x000037         0x3c build/default/production/uart.o
+ .debug_str       0x000073         0x4f build/default/production/motor.o
+ .debug_str       0x0000c2         0x5d build/default/production/timer.o
+ .debug_str       0x00011f         0x28 build/default/production/sensor.o
 
 .debug_loc
  *(.debug_loc)
@@ -387,18 +396,18 @@ userdata
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x34e
+                  0x000000        0x3c5
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0xf8 build/default/production/main.o
+                  0x000000        0x106 build/default/production/main.o
  .debug_pubnames
-                  0x0000f8         0xa8 build/default/production/uart.o
+                  0x000106         0xa8 build/default/production/uart.o
  .debug_pubnames
-                  0x0001a0         0xbe build/default/production/motor.o
+                  0x0001ae         0xbe build/default/production/motor.o
  .debug_pubnames
-                  0x00025e         0x8e build/default/production/timer.o
+                  0x00026c         0xf7 build/default/production/timer.o
  .debug_pubnames
-                  0x0002ec         0x62 build/default/production/sensor.o
+                  0x000363         0x62 build/default/production/sensor.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1147,16 +1156,15 @@ __c30_signature
  __c30_signature
                   0x00044f          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
 
-.nbss               0x0800          0xe
- .nbss              0x0800          0xe build/default/production/main.o
+.nbss               0x0800          0xc
+ .nbss              0x0800          0xc build/default/production/main.o
                     0x0800                  _tempRX
                     0x0801                  _tempRX2
                     0x0802                  _broj1
                     0x0804                  _broj2
                     0x0806                  _timer_ms
-                    0x0808                  _timer_us
-                    0x080a                  _delay_ms
-                    0x080c                  _delay_us
+                    0x0808                  _delay_ms
+                    0x080a                  _timer_interrupt_us
 
 .ivt._T1Interrupt
                   0x00001a          0x2
@@ -1178,6 +1186,11 @@ __c30_signature
  .ivt._T4Interrupt
                   0x00003e          0x2 build/default/production/main.o
 
+.ivt._T5Interrupt
+                  0x000040          0x2
+ .ivt._T5Interrupt
+                  0x000040          0x2 build/default/production/main.o
+
 .ivt._U1RXInterrupt
                   0x000026          0x2
  .ivt._U1RXInterrupt
@@ -1188,49 +1201,51 @@ __c30_signature
  .ivt._U2RXInterrupt
                   0x000044          0x2 build/default/production/main.o
 
-.const              0x829a         0x30 load address 0x00029a  
- .const             0x829a         0x18 build/default/production/main.o
- .const             0x82b2          0xe build/default/production/timer.o
- .const             0x82c0          0xa build/default/production/sensor.o
+.const              0x8294         0x22 load address 0x000294  
+ .const             0x8294         0x22 build/default/production/main.o
 
-.text             0x0002ca        0x3ca
- .text            0x0002ca        0x182 build/default/production/uart.o
-                  0x0002ca                  _initUART1
-                  0x0002e4                  _WriteUART1_char
-                  0x00030c                  _WriteUART1_int
-                  0x000378                  _WriteUART1_string
-                  0x000394                  _initUART2
-                  0x0003ac                  _WriteUART2_char
-                  0x0003c4                  _WriteUART2_int
-                  0x000430                  _WriteUART2_string
- .text            0x00044c         0xd6 build/default/production/motor.o
-                  0x00044c                  _mot1_init_pwm
-                  0x000468                  _mot2_init_pwm
-                  0x000484                  _mot1_set_pwm
-                  0x000490                  _mot2_set_pwm
-                  0x00049c                  _init_motor
-                  0x0004b2                  _set_turbo
-                  0x0004c4                  _set_right
-                  0x0004d6                  _set_left
-                  0x0004e8                  _set_backward
-                  0x0004fa                  _set_forward
-                  0x00050c                  _set_stop
- .text            0x000522         0xac build/default/production/sensor.o
-                  0x000522                  _init_forward_sensor
-                  0x000532                  _init_left_sensor
-                  0x000542                  _get_forward_cm
-                  0x000584                  _get_left_cm
- .text            0x0005ce         0x7a build/default/production/timer.o
-                  0x0005ce                  _Init_T1
-                  0x0005ea                  _Delay_us
-                  0x0005fc                  _reset_timer_us
-                  0x000606                  _read_timer_us
-                  0x00060e                  _Init_T4
-                  0x000624                  _Delay_ms
-                  0x000636                  _reset_timer_ms
-                  0x000640                  _read_timer_ms
- .text            0x000648         0x4c build/default/production/main.o
+.text             0x0002b6        0x3e2
+ .text            0x0002b6        0x182 build/default/production/uart.o
+                  0x0002b6                  _initUART1
+                  0x0002d0                  _WriteUART1_char
+                  0x0002f8                  _WriteUART1_int
+                  0x000364                  _WriteUART1_string
+                  0x000380                  _initUART2
+                  0x000398                  _WriteUART2_char
+                  0x0003b0                  _WriteUART2_int
+                  0x00041c                  _WriteUART2_string
+ .text            0x000438         0xd6 build/default/production/motor.o
+                  0x000438                  _mot1_init_pwm
+                  0x000454                  _mot2_init_pwm
+                  0x000470                  _mot1_set_pwm
+                  0x00047c                  _mot2_set_pwm
+                  0x000488                  _init_motor
+                  0x00049e                  _set_turbo
+                  0x0004b0                  _set_right
+                  0x0004c2                  _set_left
+                  0x0004d4                  _set_backward
+                  0x0004e6                  _set_forward
+                  0x0004f8                  _set_stop
+ .text            0x00050e         0xba build/default/production/timer.o
+                  0x00050e                  _Init_T1
+                  0x000524                  _Delay_us
+                  0x00053e                  _reset_timer_us
+                  0x000548                  _start_timer_us
+                  0x000550                  _stop_timer_us
+                  0x000558                  _set_timer_interrupt_us
+                  0x00056a                  _start_measuring_time_us
+                  0x000578                  _return_time_measurement_us
+                  0x000588                  _Init_T4
+                  0x0005a0                  _Delay_ms
+                  0x0005b6                  _reset_timer_ms
+                  0x0005c0                  _read_timer_ms
+ .text            0x0005c8         0x80 build/default/production/sensor.o
+                  0x0005c8                  _init_forward_sensor
+                  0x0005d8                  _init_left_sensor
+                  0x0005e8                  _get_forward_cm
+                  0x000618                  _get_left_cm
+ .text            0x000648         0x50 build/default/production/main.o
                   0x000648                  _main
 
-.dinit            0x000694          0x8
- .dinit           0x000694          0x8 data_init
+.dinit            0x000698          0x8
+ .dinit           0x000698          0x8 data_init

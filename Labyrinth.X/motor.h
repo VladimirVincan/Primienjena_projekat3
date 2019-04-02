@@ -1,6 +1,6 @@
 /* 
  * File:   motor.h
- * Author: Z1
+ * Author: Vladimir Vincan EE5-2015
  *
  * Created on March 3, 2019, 10:18 PM
  */
@@ -57,5 +57,5 @@ void set_stop();
 }
 #endif
 
-#endif	/* PWM_H */
+#endif	/* MOTOR_H */
 

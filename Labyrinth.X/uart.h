@@ -1,3 +1,17 @@
+/* 
+ * File:   uart.h
+ * Author: Vladimir Vincan EE5-2015
+ *
+ * Created on April 1, 2019, 2:25 AM
+ */
+
+#ifndef UART_H
+#define	UART_H
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+    
 #include <p30fxxxx.h>
 
 void initUART1(void);
@@ -9,3 +23,9 @@ void initUART2(void);
 void WriteUART2_char(unsigned int data);
 void WriteUART2_int(unsigned int data);
 void WriteUART2_string(register const char *str);
+
+#ifdef	__cplusplus
+}
+#endif
+
+#endif	/* UART_H */

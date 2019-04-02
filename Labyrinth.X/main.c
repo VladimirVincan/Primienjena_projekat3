@@ -19,15 +19,16 @@ unsigned int broj1,broj2;
  */
 /***********************************************/
 
-int timer_ms, timer_us;
-int delay_ms, delay_us;
+unsigned int timer_ms, delay_ms;
+unsigned int timer_interrupt_us;
+//unsigned int timer_us, delay_us;
 
 void __attribute__((__interrupt__)) _T1Interrupt(void)
 {
+    /* cannot implement timer_us and delay_us - too costly */
    	TMR1 = 0;
-    if (++timer_us == MAX_TIMER_VAL) timer_us = 0;
-    if (++delay_us == MAX_TIMER_VAL) delay_us = 0;
     IFS0bits.T1IF = 0;
+    timer_interrupt_us = 1;
 }
 
 void __attribute__((__interrupt__)) _T2Interrupt(void)
@@ -50,13 +51,19 @@ void __attribute__((__interrupt__)) _T4Interrupt(void)
     IFS1bits.T4IF = 0;
 }
 
+void __attribute__((__interrupt__)) _T5Interrupt(void)
+{
+   	TMR5 = 0;
+    IFS1bits.T5IF = 0;
+}
+
 /***********************************************/
 /*
  * UART interrupt
  */
 /***********************************************/
 
-void __attribute__((__interrupt__)) _U1RXInterrupt(void)  // to bluetooth
+void __attribute__((__interrupt__)) _U1RXInterrupt(void)  // to Bluetooth
 {
     IFS0bits.U1RXIF = 0;
     tempRX=U1RXREG;
@@ -87,8 +94,9 @@ int main(void){
     mot2_set_pwm(0);
     set_stop();
     
-    Init_T1();
     Init_T4();
+    WriteUART1_string("Prosao T4 ");
+    Init_T1();
     init_forward_sensor();
     init_left_sensor();
 
