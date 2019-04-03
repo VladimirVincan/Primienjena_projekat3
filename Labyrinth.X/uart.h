@@ -13,6 +13,8 @@ extern "C" {
 #endif
     
 #include <p30fxxxx.h>
+#define BAUD_RATE_1200 0x0207
+#define BAUD_RATE_9600 0x0040
 
 void initUART1(void);
 void WriteUART1_char(unsigned int data);

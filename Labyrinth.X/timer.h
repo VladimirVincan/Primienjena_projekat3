@@ -32,12 +32,9 @@ unsigned int return_time_measurement_us();
 
 void Init_T4(void);
 void Delay_ms (int time_ms); // utilized with T4
+void start_timer_ms(void);
+void stop_timer_ms(void);
 void reset_timer_ms(void);
-unsigned int read_timer_ms(void);
-
-/*void Init_T5(void);
-void reset_timer_read_us(void);
-int read_timer_us(void);*/
 
 #ifdef	__cplusplus
 }

@@ -19,7 +19,7 @@ void init_left_sensor(void){
     SENSOR_LEFT_TRIG_LAT = 0;
 }
 
-unsigned int get_forward_cm(void){
+unsigned int get_forward_mm(void){
     Delay_ms(60);
     SENSOR_FORWARD_TRIG_LAT = 1;
     Delay_us(10);
@@ -32,15 +32,15 @@ unsigned int get_forward_cm(void){
     return return_time_measurement_us() / 58;
 }
 
-unsigned int get_left_cm(void){
+unsigned int get_left_mm(void){
     Delay_ms(60);
-    SENSOR_FORWARD_TRIG_LAT = 1;
+    SENSOR_LEFT_TRIG_LAT = 1;
     Delay_us(10);
-    SENSOR_FORWARD_TRIG_LAT = 0;
+    SENSOR_LEFT_TRIG_LAT = 0;
     
-    while (SENSOR_FORWARD_ECHO_PORT == 0); //TODO: && read_timer_us() <= MAX_LOW_TIME);
+    while (SENSOR_LEFT_ECHO_PORT == 0); //TODO: && read_timer_us() <= MAX_LOW_TIME);
     start_measuring_time_us();
-    while (SENSOR_FORWARD_ECHO_PORT == 1); //TODO: && read_timer_us() <= MAX_HIGH_TIME);
+    while (SENSOR_LEFT_ECHO_PORT == 1); //TODO: && read_timer_us() <= MAX_HIGH_TIME);
     
     return return_time_measurement_us() / 58;
 }

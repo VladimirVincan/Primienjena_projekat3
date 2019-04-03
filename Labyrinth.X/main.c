@@ -102,9 +102,12 @@ int main(void){
 
 	while(1)
 	{
-        WriteUART1_string("Razdaljina: ");
-        WriteUART1_int(get_forward_cm());
-        WriteUART1_string("cm");
+        WriteUART1_string("NAPRED:");
+        WriteUART1_int(get_forward_mm());
+        WriteUART1_string("mm. ");
+        WriteUART1_string("LEVO:");
+        WriteUART1_int(get_left_mm());
+        WriteUART1_string("mm. ");
         WriteUART1_char(tempRX);
         Delay_ms(1000);
        /* WriteUART1_string("Serijska v2");

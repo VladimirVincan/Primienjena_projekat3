@@ -37,8 +37,8 @@ extern "C" {
 void init_forward_sensor(void);
 void init_left_sensor(void);
 
-unsigned int get_forward_cm(void);
-unsigned int get_left_cm(void);
+unsigned int get_forward_mm(void);
+unsigned int get_left_mm(void);
 
 #ifdef	__cplusplus
 }

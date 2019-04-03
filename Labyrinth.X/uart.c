@@ -2,12 +2,12 @@
 
 void initUART1(void)
 {
-    U1BRG=0x0207;//ovim odredjujemo baudrate
-    U1MODEbits.ALTIO=0;//biramo koje pinove koristimo za komunikaciju osnovne ili alternativne
-    IEC0bits.U1RXIE=1;//omogucavamo rx1 interupt
+    U1BRG= BAUD_RATE_9600; //ovim odredjujemo baudrate
+    U1MODEbits.ALTIO=0; //biramo koje pinove koristimo za komunikaciju osnovne ili alternativne
+    IEC0bits.U1RXIE=1; //omogucavamo rx1 interupt
     U1STA&=0xfffc;
-    U1MODEbits.UARTEN=1;//ukljucujemo ovaj modul
-    U1STAbits.UTXEN=1;//ukljucujemo predaju
+    U1MODEbits.UARTEN=1; //ukljucujemo ovaj modul
+    U1STAbits.UTXEN=1; //ukljucujemo predaju
 }
 
 void WriteUART1_char(unsigned int data)

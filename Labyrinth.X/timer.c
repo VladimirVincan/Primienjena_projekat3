@@ -65,20 +65,26 @@ void Init_T4(void){
 	T4CONbits.TCS =0; // 0 = Internal clock (FOSC/4)
 	IFS1bits.T4IF = 0; // clear interrupt flag
 	IEC1bits.T4IE = 1; // enable interrupt
-	T4CONbits.TON = 1; // T4 on   
+	T4CONbits.TON = 0; // T4 on   
+}
+
+void start_timer_ms(void){
+    T4CONbits.TON = 1;
+}
+
+void stop_timer_ms(void){
+    T4CONbits.TON = 0;
 }
 
 void Delay_ms (int time_ms){
     reset_timer_ms();
+    start_timer_ms();
     delay_ms = 0;
     while (delay_ms < time_ms);
+    stop_timer_ms();
 }
 
 void reset_timer_ms(void){
     TMR4 = 0;
     timer_ms = 0;
-}
-
-unsigned int read_timer_ms(void){
-    return timer_ms;
 }
