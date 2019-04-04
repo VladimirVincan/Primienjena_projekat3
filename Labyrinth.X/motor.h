@@ -37,7 +37,7 @@ extern "C" {
 #define OCxCON_OCM_PWM_ON_FAULT_DISABLED 0x0006
     
 #define PWM_MIN 0
-#define PWM_MID 1249    
+#define PWM_MID 2200    
 #define PWM_MAX 2499
 
 void mot1_init_pwm();
@@ -51,6 +51,8 @@ void set_right();
 void set_left();
 void set_backward();
 void set_forward();
+void set_stop_left_right();
+void set_stop_forward_backward();
 void set_stop();
     
 #ifdef	__cplusplus

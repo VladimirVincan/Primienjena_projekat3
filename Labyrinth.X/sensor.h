@@ -39,6 +39,7 @@ void init_left_sensor(void);
 
 unsigned int get_forward_mm(void);
 unsigned int get_left_mm(void);
+unsigned int further_than(unsigned int compare_mm, unsigned int measured_mm);
 
 #ifdef	__cplusplus
 }

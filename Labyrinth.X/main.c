@@ -95,51 +95,65 @@ int main(void){
     set_stop();
     
     Init_T4();
-    WriteUART1_string("Prosao T4 ");
     Init_T1();
     init_forward_sensor();
     init_left_sensor();
 
+    unsigned int forward_distance_mm = 0;
+    unsigned int left_distance_mm = 0;
+        
 	while(1)
 	{
-        WriteUART1_string("NAPRED:");
-        WriteUART1_int(get_forward_mm());
-        WriteUART1_string("mm. ");
+        forward_distance_mm = get_forward_mm();
+        left_distance_mm = get_left_mm();
+        
+        /*WriteUART1_string("DALJ:");
+        WriteUART1_int(forward_distance_mm);
+        WriteUART1_string("mm. ");*/
         WriteUART1_string("LEVO:");
-        WriteUART1_int(get_left_mm());
+        WriteUART1_int(left_distance_mm);
         WriteUART1_string("mm. ");
-        WriteUART1_char(tempRX);
-        Delay_ms(1000);
-       /* WriteUART1_string("Serijska v2");
-        WriteUART1_char(tempRX);
-        if (i<4){
+       
+        /*******************************************/       
+        // object ahead. go right. go back
+        if (forward_distance_mm > 50 && forward_distance_mm <= 200) {
+            WriteUART1_string("back. ");
+            set_left();
+            set_backward();
+            Delay_ms(300);
+        }
+        // nothing deteted. go left
+        else if (further_than(400,forward_distance_mm) && further_than(300,left_distance_mm)) {
+            WriteUART1_string("left. ");
             set_left();
             set_forward();
-            i++;
+            Delay_ms(200);
+            set_stop_left_right();
+            Delay_ms(300);
         }
-        else if (i<10){
-            set_stop();
-            i++;
+        // perfectly aligned. go forward
+        if (further_than(400,forward_distance_mm) && left_distance_mm > 150 && left_distance_mm <= 300) {
+            WriteUART1_string("forward. ");
+            set_stop_left_right();
+            set_forward();
+            Delay_ms(300);            
         }
-        else if (i<14) {
+
+        // go right
+        else if ((forward_distance_mm > 150 && forward_distance_mm < 400) || (left_distance_mm > 50 && left_distance_mm <= 150)) {
+            WriteUART1_string("right. ");
+            set_forward();
             set_right();
-            set_backward();
-            i++;
-        }
-        else {
-            set_stop();
-            if (i>=20) i = 0;
-            i++;
+            Delay_ms(300);
         }
         
-      
-        for(broj2=0;broj2<1000;broj2++);*/
+        set_stop();
+        WriteUART1_char(tempRX);
+        Delay_ms(300);
+
     } // while
     return 0;
 } // main
-
-
-
-
-
-
+/*
+ 
+        }   */ 
