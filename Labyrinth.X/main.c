@@ -4,14 +4,17 @@
 #include "uart.h"
 #include "sensor.h"
 #include "timer.h"
+#include "adc.h"
 
 _FOSC(CSW_FSCM_OFF & XT_PLL4);
 _FWDT(WDT_OFF);
 
 #define MAX_TIMER_VAL 32000
+#define TIMES_MEASURED 1
 
 unsigned char tempRX, tempRX2;
 unsigned int broj1,broj2;
+unsigned int adc_reg;
 
 /***********************************************/
 /*
@@ -77,6 +80,17 @@ void __attribute__((__interrupt__)) _U2RXInterrupt(void) { // to PC
 
 /***********************************************/
 /*
+ * ADC interrupt
+ */
+/***********************************************/
+
+void __attribute__((__interrupt__)) _ADCInterrupt(void) {
+    adc_reg=ADCBUF0;
+    IFS0bits.ADIF = 0;
+} 
+
+/***********************************************/
+/*
  * MAIN
  */
 /***********************************************/
@@ -87,6 +101,7 @@ int main(void){
     initUART2();
     WriteUART1_string("start ");
     
+    ADCinit();
     init_motor();
     mot1_init_pwm();
     mot2_init_pwm();
@@ -101,55 +116,76 @@ int main(void){
 
     unsigned int forward_distance_mm = 0;
     unsigned int left_distance_mm = 0;
+    int i = 0;
         
 	while(1)
 	{
-        forward_distance_mm = get_forward_mm();
-        left_distance_mm = get_left_mm();
+        forward_distance_mm = 0;
+        left_distance_mm = 0;
+        for (i=0;i<TIMES_MEASURED;++i){
+            forward_distance_mm += IR_read();//get_forward_mm();
+            left_distance_mm += get_left_mm();
+        }
+        forward_distance_mm /= TIMES_MEASURED;
+        left_distance_mm /= TIMES_MEASURED;
         
-        /*WriteUART1_string("DALJ:");
-        WriteUART1_int(forward_distance_mm);
-        WriteUART1_string("mm. ");*/
         WriteUART1_string("LEVO:");
         WriteUART1_int(left_distance_mm);
         WriteUART1_string("mm. ");
-       
+        WriteUART1_string("DALJ:");
+        WriteUART1_int(forward_distance_mm);
+        WriteUART1_string("mm. ");
+        Delay_ms(1000);
+
         /*******************************************/       
-        // object ahead. go right. go back
-        if (forward_distance_mm > 50 && forward_distance_mm <= 200) {
+        // object ahead. go back
+        if (forward_distance_mm > SENSOR_ERROR && forward_distance_mm <= 150) {
             WriteUART1_string("back. ");
             set_left();
             set_backward();
-            Delay_ms(300);
+            //Delay_ms(500);
+            
+            //set_stop_left_right();
+            //set_forward();
+            //Delay_ms(100);
         }
         // nothing deteted. go left
         else if (further_than(400,forward_distance_mm) && further_than(300,left_distance_mm)) {
             WriteUART1_string("left. ");
             set_left();
             set_forward();
-            Delay_ms(200);
-            set_stop_left_right();
-            Delay_ms(300);
+            //Delay_ms(400);
+            
+            //set_stop_left_right();
+            //set_backward();
+            //Delay_ms(100);
         }
         // perfectly aligned. go forward
-        if (further_than(400,forward_distance_mm) && left_distance_mm > 150 && left_distance_mm <= 300) {
+        else if (further_than(400,forward_distance_mm) && left_distance_mm > 150 && left_distance_mm <= 300) {
             WriteUART1_string("forward. ");
             set_stop_left_right();
             set_forward();
-            Delay_ms(300);            
+            //Delay_ms(400);   
+            
+            //set_backward();
+            //Delay_ms(100);
         }
 
         // go right
-        else if ((forward_distance_mm > 150 && forward_distance_mm < 400) || (left_distance_mm > 50 && left_distance_mm <= 150)) {
+        else if ((forward_distance_mm < 400) || (left_distance_mm > SENSOR_ERROR && left_distance_mm <= 150)) {
             WriteUART1_string("right. ");
             set_forward();
             set_right();
-            Delay_ms(300);
+            //Delay_ms(400);
+            
+            //set_stop_left_right();
+            //set_backward();
+            //Delay_ms(100);
         }
         
-        set_stop();
+        //set_stop();
         WriteUART1_char(tempRX);
-        Delay_ms(300);
+        //Delay_ms(300);
 
     } // while
     return 0;

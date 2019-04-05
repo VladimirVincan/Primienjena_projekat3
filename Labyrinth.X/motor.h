@@ -37,7 +37,7 @@ extern "C" {
 #define OCxCON_OCM_PWM_ON_FAULT_DISABLED 0x0006
     
 #define PWM_MIN 0
-#define PWM_MID 2200    
+#define PWM_MID 2499    
 #define PWM_MAX 2499
 
 void mot1_init_pwm();

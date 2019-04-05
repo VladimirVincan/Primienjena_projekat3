@@ -1,8 +1,8 @@
 #include "sensor.h"
 
 void init_forward_sensor(void){
-    SENSOR_FORWARD_TRIG_ADPCFG = 1;
-    SENSOR_FORWARD_ECHO_ADPCFG = 1;
+    //SENSOR_FORWARD_TRIG_ADPCFG = 1;
+    //SENSOR_FORWARD_ECHO_ADPCFG = 1;
     
     SENSOR_FORWARD_TRIG_TRIS = 0;
     SENSOR_FORWARD_ECHO_TRIS = 1;
@@ -11,8 +11,8 @@ void init_forward_sensor(void){
 }
 
 void init_left_sensor(void){
-    SENSOR_LEFT_TRIG_ADPCFG = 1;
-    SENSOR_LEFT_ECHO_ADPCFG = 1;
+    //SENSOR_LEFT_TRIG_ADPCFG = 1;
+    //SENSOR_LEFT_ECHO_ADPCFG = 1;
     
     SENSOR_LEFT_TRIG_TRIS = 0;
     SENSOR_LEFT_ECHO_TRIS = 1;
@@ -21,9 +21,9 @@ void init_left_sensor(void){
 }
 
 unsigned int get_forward_mm(void){
-    Delay_ms(60);
+    Delay_ms(100);
     SENSOR_FORWARD_TRIG_LAT = 1;
-    Delay_us(10);
+    Delay_us(20);
     SENSOR_FORWARD_TRIG_LAT = 0;
     
     while (SENSOR_FORWARD_ECHO_PORT == 0); //TODO: && read_timer_us() <= MAX_LOW_TIME);
@@ -34,9 +34,9 @@ unsigned int get_forward_mm(void){
 }
 
 unsigned int get_left_mm(void){
-    Delay_ms(60);
+    Delay_ms(100);
     SENSOR_LEFT_TRIG_LAT = 1;
-    Delay_us(10);
+    Delay_us(20);
     SENSOR_LEFT_TRIG_LAT = 0;
     
     while (SENSOR_LEFT_ECHO_PORT == 0); //TODO: && read_timer_us() <= MAX_LOW_TIME);
@@ -47,5 +47,5 @@ unsigned int get_left_mm(void){
 }
 
 unsigned int further_than(unsigned int compare_mm, unsigned int measured_mm){
-    return measured_mm < 50 || measured_mm > compare_mm;
+    return measured_mm < SENSOR_ERROR || measured_mm > compare_mm;
 }
