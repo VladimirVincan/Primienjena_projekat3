@@ -11,6 +11,7 @@ void Init_T1(void){
     TMR1 = 0;
 	PR1 = TMR1_period;
     timer_interrupt_us = 0;
+    T1CONbits.TCKPS = 0b10;
 	T1CONbits.TCS =0; // 0 = Internal clock (FOSC/4)
 	IFS0bits.T1IF = 0; // clear interrupt flag
 	IEC0bits.T1IE = 1; // enable interrupt

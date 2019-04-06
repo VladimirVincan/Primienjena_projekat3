@@ -120,11 +120,14 @@ int main(void){
         
 	while(1)
 	{
+        WriteUART1_char(10);
+        WriteUART1_char(13);
+     
         forward_distance_mm = 0;
         left_distance_mm = 0;
         for (i=0;i<TIMES_MEASURED;++i){
-            forward_distance_mm += IR_read();//get_forward_mm();
-            left_distance_mm += get_left_mm();
+            forward_distance_mm += get_forward_mm()*10;//IR_read();//
+            left_distance_mm += get_left_mm()*10;
         }
         forward_distance_mm /= TIMES_MEASURED;
         left_distance_mm /= TIMES_MEASURED;
@@ -139,53 +142,61 @@ int main(void){
 
         /*******************************************/       
         // object ahead. go back
-        if (forward_distance_mm > SENSOR_ERROR && forward_distance_mm <= 150) {
+        if (forward_distance_mm <= 150) {
             WriteUART1_string("back. ");
             set_left();
             set_backward();
-            //Delay_ms(500);
+            Delay_ms(600);
             
-            //set_stop_left_right();
-            //set_forward();
-            //Delay_ms(100);
+            set_stop_left_right();
+            set_forward();
+            Delay_ms(100);
+            
+            set_right();
+            set_forward();
+            Delay_ms(600);
+            
+            set_stop_left_right();
+            set_backward();
+            Delay_ms(100);
         }
         // nothing deteted. go left
-        else if (further_than(400,forward_distance_mm) && further_than(300,left_distance_mm)) {
+        else if (400<forward_distance_mm && (300<left_distance_mm)) {
             WriteUART1_string("left. ");
             set_left();
             set_forward();
-            //Delay_ms(400);
+            Delay_ms(400);
             
-            //set_stop_left_right();
-            //set_backward();
-            //Delay_ms(100);
+            set_stop_left_right();
+            set_backward();
+            Delay_ms(100);
         }
         // perfectly aligned. go forward
-        else if (further_than(400,forward_distance_mm) && left_distance_mm > 150 && left_distance_mm <= 300) {
+        else if (400 < forward_distance_mm && left_distance_mm > 150 && left_distance_mm <= 300) {
             WriteUART1_string("forward. ");
             set_stop_left_right();
             set_forward();
-            //Delay_ms(400);   
+            Delay_ms(400);   
             
-            //set_backward();
-            //Delay_ms(100);
+            set_backward();
+            Delay_ms(100);
         }
 
         // go right
-        else if ((forward_distance_mm < 400) || (left_distance_mm > SENSOR_ERROR && left_distance_mm <= 150)) {
+        else if ((forward_distance_mm < 400) || (left_distance_mm <= 150)) {
             WriteUART1_string("right. ");
             set_forward();
             set_right();
-            //Delay_ms(400);
+            Delay_ms(400);
             
-            //set_stop_left_right();
-            //set_backward();
-            //Delay_ms(100);
+            set_stop_left_right();
+            set_backward();
+            Delay_ms(100);
         }
         
-        //set_stop();
+        set_stop();
         WriteUART1_char(tempRX);
-        //Delay_ms(300);
+        Delay_ms(300);
 
     } // while
     return 0;

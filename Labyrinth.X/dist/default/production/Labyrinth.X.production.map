@@ -57,10 +57,14 @@ c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt
                               (__crt_start_mode_normal)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(addsf3.eo)
                               build/default/production/adc.o (___subsf3)
+c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                              build/default/production/sensor.o (___divsf3)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
                               build/default/production/adc.o (_(float, int, long long, short, float, short, int))
+c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
+                              build/default/production/sensor.o (___fixunssfsi)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
-                              build/default/production/adc.o (___floatunsisf)
+                              build/default/production/sensor.o (___floatunsisf)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fpack.eo)
                               c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fpack)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack.eo)
@@ -81,12 +85,12 @@ xc16-ld 1.36 (A)
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x41a           0x627  (1575)
-.const                       0x51a                0x38            0x54  (84)
-.text                        0x552               0x5e6           0x8d9  (2265)
-.dinit                       0xb38                 0x8             0xc  (12)
+.text                        0x100               0x4d4           0x73e  (1854)
+.const                       0x5d4                0x38            0x54  (84)
+.text                        0x60c               0x63e           0x95d  (2397)
+.dinit                       0xc4a                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0xf60  (3936) 8%
+                 Total "program" memory used (bytes):         0x10fb  (4347) 8%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -147,73 +151,75 @@ External Symbols in Program Memory (by address):
                   0x0002a6                  __DefaultInterrupt
                   0x0002ac                  ___subsf3
                   0x0002ae                  ___addsf3
-                  0x000368                  ___fixsfsi
-                  0x0003aa                  ___floatunsisf
-                  0x0003ae                  __fpack
-                  0x0003fa                  __funpack
-                  0x000424                  __funpack2
-                  0x000434                  __fPropagateNaN
-                  0x000446                  __fbopExit
-                  0x00044e                  __fbopReturnNaN
-                  0x000454                  ___mulsf3
-                  0x0004bc                  ___floatundisf
-                  0x000552                  _initUART1
-                  0x00056c                  _WriteUART1_char
-                  0x000594                  _WriteUART1_int
-                  0x000600                  _WriteUART1_string
-                  0x00061c                  _initUART2
-                  0x000634                  _WriteUART2_char
-                  0x00064c                  _WriteUART2_int
-                  0x0006b8                  _WriteUART2_string
-                  0x0006d4                  _mot1_init_pwm
-                  0x0006f0                  _mot2_init_pwm
-                  0x00070c                  _mot1_set_pwm
-                  0x000718                  _mot2_set_pwm
-                  0x000724                  _init_motor
-                  0x00073a                  _set_turbo
-                  0x00075c                  _set_right
-                  0x000782                  _set_left
-                  0x0007a8                  _set_backward
-                  0x0007ca                  _set_forward
-                  0x0007ec                  _set_stop_left_right
-                  0x0007fa                  _set_stop_forward_backward
-                  0x000808                  _set_stop
-                  0x00081e                  _main
-                  0x000926                  _Init_T1
-                  0x00093c                  _Delay_us
-                  0x000956                  _reset_timer_us
-                  0x000960                  _start_timer_us
-                  0x000968                  _stop_timer_us
-                  0x000970                  _set_timer_interrupt_us
-                  0x000982                  _start_measuring_time_us
-                  0x000990                  _return_time_measurement_us
-                  0x0009a0                  _Init_T4
-                  0x0009b8                  _start_timer_ms
-                  0x0009c0                  _stop_timer_ms
-                  0x0009c8                  _Delay_ms
-                  0x0009e2                  _reset_timer_ms
-                  0x0009ec                  _ADCinit
-                  0x000a54                  _IR_read
-                  0x000a9e                  _init_forward_sensor
-                  0x000aaa                  _init_left_sensor
-                  0x000ab6                  _get_forward_mm
-                  0x000aea                  _get_left_mm
-                  0x000b1a                  _further_than
+                  0x000368                  ___divsf3
+                  0x0003ec                  ___fixsfsi
+                  0x00042e                  ___fixunssfsi
+                  0x000464                  ___floatunsisf
+                  0x000468                  __fpack
+                  0x0004b4                  __funpack
+                  0x0004de                  __funpack2
+                  0x0004ee                  __fPropagateNaN
+                  0x000500                  __fbopExit
+                  0x000508                  __fbopReturnNaN
+                  0x00050e                  ___mulsf3
+                  0x000576                  ___floatundisf
+                  0x00060c                  _initUART1
+                  0x000626                  _WriteUART1_char
+                  0x00064e                  _WriteUART1_int
+                  0x0006ba                  _WriteUART1_string
+                  0x0006d6                  _initUART2
+                  0x0006ee                  _WriteUART2_char
+                  0x000706                  _WriteUART2_int
+                  0x000772                  _WriteUART2_string
+                  0x00078e                  _mot1_init_pwm
+                  0x0007aa                  _mot2_init_pwm
+                  0x0007c6                  _mot1_set_pwm
+                  0x0007d2                  _mot2_set_pwm
+                  0x0007de                  _init_motor
+                  0x0007f4                  _set_turbo
+                  0x000816                  _set_right
+                  0x00083c                  _set_left
+                  0x000862                  _set_backward
+                  0x000884                  _set_forward
+                  0x0008a6                  _set_stop_left_right
+                  0x0008b4                  _set_stop_forward_backward
+                  0x0008c2                  _set_stop
+                  0x0008d8                  _main
+                  0x000a1e                  _Init_T1
+                  0x000a3e                  _Delay_us
+                  0x000a58                  _reset_timer_us
+                  0x000a62                  _start_timer_us
+                  0x000a6a                  _stop_timer_us
+                  0x000a72                  _set_timer_interrupt_us
+                  0x000a84                  _start_measuring_time_us
+                  0x000a92                  _return_time_measurement_us
+                  0x000aa2                  _Init_T4
+                  0x000aba                  _start_timer_ms
+                  0x000ac2                  _stop_timer_ms
+                  0x000aca                  _Delay_ms
+                  0x000ae4                  _reset_timer_ms
+                  0x000aee                  _ADCinit
+                  0x000b56                  _IR_read
+                  0x000ba0                  _init_forward_sensor
+                  0x000bac                  _init_left_sensor
+                  0x000bb8                  _get_forward_mm
+                  0x000bf4                  _get_left_mm
+                  0x000c2c                  _further_than
 
 External Symbols in Program Memory (by name):
 
-                  0x0009ec                  _ADCinit
-                  0x0009c8                  _Delay_ms
-                  0x00093c                  _Delay_us
-                  0x000a54                  _IR_read
-                  0x000926                  _Init_T1
-                  0x0009a0                  _Init_T4
-                  0x00056c                  _WriteUART1_char
-                  0x000594                  _WriteUART1_int
-                  0x000600                  _WriteUART1_string
-                  0x000634                  _WriteUART2_char
-                  0x00064c                  _WriteUART2_int
-                  0x0006b8                  _WriteUART2_string
+                  0x000aee                  _ADCinit
+                  0x000aca                  _Delay_ms
+                  0x000a3e                  _Delay_us
+                  0x000b56                  _IR_read
+                  0x000a1e                  _Init_T1
+                  0x000aa2                  _Init_T4
+                  0x000626                  _WriteUART1_char
+                  0x00064e                  _WriteUART1_int
+                  0x0006ba                  _WriteUART1_string
+                  0x0006ee                  _WriteUART2_char
+                  0x000706                  _WriteUART2_int
+                  0x000772                  _WriteUART2_string
                   0x00028e                  __ADCInterrupt
                   0x0002a6                  __DefaultInterrupt
                   0x0001c8                  __T1Interrupt
@@ -224,51 +230,53 @@ External Symbols in Program Memory (by name):
                   0x00025a                  __U1RXInterrupt
                   0x000274                  __U2RXInterrupt
                   0x0002ae                  ___addsf3
-                  0x000368                  ___fixsfsi
-                  0x0004bc                  ___floatundisf
-                  0x0003aa                  ___floatunsisf
-                  0x000454                  ___mulsf3
+                  0x000368                  ___divsf3
+                  0x0003ec                  ___fixsfsi
+                  0x00042e                  ___fixunssfsi
+                  0x000576                  ___floatundisf
+                  0x000464                  ___floatunsisf
+                  0x00050e                  ___mulsf3
                   0x0002ac                  ___subsf3
                   0x000152                  __data_init
                   0x000152                  __data_init_standard
-                  0x000434                  __fPropagateNaN
-                  0x000446                  __fbopExit
-                  0x00044e                  __fbopReturnNaN
-                  0x0003ae                  __fpack
-                  0x0003fa                  __funpack
-                  0x000424                  __funpack2
+                  0x0004ee                  __fPropagateNaN
+                  0x000500                  __fbopExit
+                  0x000508                  __fbopReturnNaN
+                  0x000468                  __fpack
+                  0x0004b4                  __funpack
+                  0x0004de                  __funpack2
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000b1a                  _further_than
-                  0x000ab6                  _get_forward_mm
-                  0x000aea                  _get_left_mm
-                  0x000552                  _initUART1
-                  0x00061c                  _initUART2
-                  0x000a9e                  _init_forward_sensor
-                  0x000aaa                  _init_left_sensor
-                  0x000724                  _init_motor
-                  0x00081e                  _main
-                  0x0006d4                  _mot1_init_pwm
-                  0x00070c                  _mot1_set_pwm
-                  0x0006f0                  _mot2_init_pwm
-                  0x000718                  _mot2_set_pwm
-                  0x0009e2                  _reset_timer_ms
-                  0x000956                  _reset_timer_us
-                  0x000990                  _return_time_measurement_us
-                  0x0007a8                  _set_backward
-                  0x0007ca                  _set_forward
-                  0x000782                  _set_left
-                  0x00075c                  _set_right
-                  0x000808                  _set_stop
-                  0x0007fa                  _set_stop_forward_backward
-                  0x0007ec                  _set_stop_left_right
-                  0x000970                  _set_timer_interrupt_us
-                  0x00073a                  _set_turbo
-                  0x000982                  _start_measuring_time_us
-                  0x0009b8                  _start_timer_ms
-                  0x000960                  _start_timer_us
-                  0x0009c0                  _stop_timer_ms
-                  0x000968                  _stop_timer_us
+                  0x000c2c                  _further_than
+                  0x000bb8                  _get_forward_mm
+                  0x000bf4                  _get_left_mm
+                  0x00060c                  _initUART1
+                  0x0006d6                  _initUART2
+                  0x000ba0                  _init_forward_sensor
+                  0x000bac                  _init_left_sensor
+                  0x0007de                  _init_motor
+                  0x0008d8                  _main
+                  0x00078e                  _mot1_init_pwm
+                  0x0007c6                  _mot1_set_pwm
+                  0x0007aa                  _mot2_init_pwm
+                  0x0007d2                  _mot2_set_pwm
+                  0x000ae4                  _reset_timer_ms
+                  0x000a58                  _reset_timer_us
+                  0x000a92                  _return_time_measurement_us
+                  0x000862                  _set_backward
+                  0x000884                  _set_forward
+                  0x00083c                  _set_left
+                  0x000816                  _set_right
+                  0x0008c2                  _set_stop
+                  0x0008b4                  _set_stop_forward_backward
+                  0x0008a6                  _set_stop_left_right
+                  0x000a72                  _set_timer_interrupt_us
+                  0x0007f4                  _set_turbo
+                  0x000a84                  _start_measuring_time_us
+                  0x000aba                  _start_timer_ms
+                  0x000a62                  _start_timer_us
+                  0x000ac2                  _stop_timer_ms
+                  0x000a6a                  _stop_timer_us
 
 Memory Configuration
 
@@ -330,7 +338,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x41a
+.text             0x000100        0x4d4
  *(.init)
  .init            0x000100         0x4c c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
                   0x000100                  __resetPRI
@@ -364,32 +372,37 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
  .libm.subsf3     0x0002ac         0xbc c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(addsf3.eo)
                   0x0002ac                  ___subsf3
                   0x0002ae                  ___addsf3
- .libm.fixsfsi    0x000368         0x42 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
-                  0x000368                  _(float, int, long long, short, float, short, int)
+ .libm.divfs3     0x000368         0x84 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                  0x000368                  ___divsf3
+ .libm.fixsfsi    0x0003ec         0x42 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                  0x0003ec                  _(float, int, long long, short, float, short, int)
+ .libm.fixunssfsi
+                  0x00042e         0x36 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
+                  0x00042e                  ___fixunssfsi
  .libm.floatunsisf
-                  0x0003aa          0x4 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
-                  0x0003aa                  ___floatunsisf
- .libm.fpack      0x0003ae         0x4c c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fpack.eo)
-                  0x0003ae                  __fpack
- .libm.funpack    0x0003fa         0x2a c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack.eo)
-                  0x0003fa                  __funpack
+                  0x000464          0x4 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x000464                  ___floatunsisf
+ .libm.fpack      0x000468         0x4c c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x000468                  __fpack
+ .libm.funpack    0x0004b4         0x2a c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x0004b4                  __funpack
  .libm.funpack2
-                  0x000424         0x10 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack2.eo)
-                  0x000424                  __funpack2
+                  0x0004de         0x10 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x0004de                  __funpack2
  .libm.fPropagateNaN
-                  0x000434         0x12 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x000434                  __fPropagateNaN
+                  0x0004ee         0x12 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x0004ee                  __fPropagateNaN
  .libm.fbobExit
-                  0x000446          0x8 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x000446                  __fbopExit
+                  0x000500          0x8 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000500                  __fbopExit
  .libm.fbopReturnNaN
-                  0x00044e          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
-                  0x00044e                  __fbopReturnNaN
- .libm.mulsf3     0x000454         0x68 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
-                  0x000454                  ___mulsf3
+                  0x000508          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000508                  __fbopReturnNaN
+ .libm.mulsf3     0x00050e         0x68 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x00050e                  ___mulsf3
  .libm.floatundisf
-                  0x0004bc         0x5e c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
-                  0x0004bc                  ___floatundisf
+                  0x000576         0x5e c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x000576                  ___floatundisf
 
 usercode
  *(usercode)
@@ -457,14 +470,14 @@ userdata
  .debug_abbrev    0x000455         0xc9 build/default/production/sensor.o
  .debug_abbrev    0x00051e         0xed build/default/production/adc.o
 
-.debug_line       0x000000        0x6c6
+.debug_line       0x000000        0x6dc
  *(.debug_line)
- .debug_line      0x000000        0x152 build/default/production/main.o
- .debug_line      0x000152        0x115 build/default/production/uart.o
- .debug_line      0x000267        0x136 build/default/production/motor.o
- .debug_line      0x00039d        0x120 build/default/production/timer.o
- .debug_line      0x0004bd         0xfe build/default/production/sensor.o
- .debug_line      0x0005bb        0x10b build/default/production/adc.o
+ .debug_line      0x000000        0x167 build/default/production/main.o
+ .debug_line      0x000167        0x115 build/default/production/uart.o
+ .debug_line      0x00027c        0x136 build/default/production/motor.o
+ .debug_line      0x0003b2        0x121 build/default/production/timer.o
+ .debug_line      0x0004d3         0xfe build/default/production/sensor.o
+ .debug_line      0x0005d1        0x10b build/default/production/adc.o
 
 .debug_frame      0x000000        0x644
  *(.debug_frame)
@@ -1241,7 +1254,7 @@ LOAD data_init
                   0x00047d         0xfa build/default/production/adc.o
 
 __c30_signature
-                  0x000577         0x66
+                  0x000577         0x72
  __c30_signature
                   0x000577          0x6 build/default/production/main.o
  __c30_signature
@@ -1261,21 +1274,25 @@ __c30_signature
  __c30_signature
                   0x0005a7          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(addsf3.eo)
  __c30_signature
-                  0x0005ad          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                  0x0005ad          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(divsf3.eo)
  __c30_signature
-                  0x0005b3          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x0005b3          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
  __c30_signature
-                  0x0005b9          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x0005b9          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
  __c30_signature
-                  0x0005bf          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x0005bf          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x0005c5          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x0005c5          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(fpack.eo)
  __c30_signature
-                  0x0005cb          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x0005cb          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack.eo)
  __c30_signature
-                  0x0005d1          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x0005d1          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x0005d7          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x0005d7          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(futil.eo)
+ __c30_signature
+                  0x0005dd          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+ __c30_signature
+                  0x0005e3          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
 
 .nbss               0x0800          0xe
  .nbss              0x0800          0xe build/default/production/main.o
@@ -1328,58 +1345,58 @@ __c30_signature
  .ivt._ADCInterrupt
                   0x00002a          0x2 build/default/production/main.o
 
-.const              0x851a         0x38 load address 0x00051a  
- .const             0x851a         0x38 build/default/production/main.o
+.const              0x85d4         0x38 load address 0x0005d4  
+ .const             0x85d4         0x38 build/default/production/main.o
 
-.text             0x000552        0x5e6
- .text            0x000552        0x182 build/default/production/uart.o
-                  0x000552                  _initUART1
-                  0x00056c                  _WriteUART1_char
-                  0x000594                  _WriteUART1_int
-                  0x000600                  _WriteUART1_string
-                  0x00061c                  _initUART2
-                  0x000634                  _WriteUART2_char
-                  0x00064c                  _WriteUART2_int
-                  0x0006b8                  _WriteUART2_string
- .text            0x0006d4        0x14a build/default/production/motor.o
-                  0x0006d4                  _mot1_init_pwm
-                  0x0006f0                  _mot2_init_pwm
-                  0x00070c                  _mot1_set_pwm
-                  0x000718                  _mot2_set_pwm
-                  0x000724                  _init_motor
-                  0x00073a                  _set_turbo
-                  0x00075c                  _set_right
-                  0x000782                  _set_left
-                  0x0007a8                  _set_backward
-                  0x0007ca                  _set_forward
-                  0x0007ec                  _set_stop_left_right
-                  0x0007fa                  _set_stop_forward_backward
-                  0x000808                  _set_stop
- .text            0x00081e        0x108 build/default/production/main.o
-                  0x00081e                  _main
- .text            0x000926         0xc6 build/default/production/timer.o
-                  0x000926                  _Init_T1
-                  0x00093c                  _Delay_us
-                  0x000956                  _reset_timer_us
-                  0x000960                  _start_timer_us
-                  0x000968                  _stop_timer_us
-                  0x000970                  _set_timer_interrupt_us
-                  0x000982                  _start_measuring_time_us
-                  0x000990                  _return_time_measurement_us
-                  0x0009a0                  _Init_T4
-                  0x0009b8                  _start_timer_ms
-                  0x0009c0                  _stop_timer_ms
-                  0x0009c8                  _Delay_ms
-                  0x0009e2                  _reset_timer_ms
- .text            0x0009ec         0xb2 build/default/production/adc.o
-                  0x0009ec                  _ADCinit
-                  0x000a54                  _IR_read
- .text            0x000a9e         0x9a build/default/production/sensor.o
-                  0x000a9e                  _init_forward_sensor
-                  0x000aaa                  _init_left_sensor
-                  0x000ab6                  _get_forward_mm
-                  0x000aea                  _get_left_mm
-                  0x000b1a                  _further_than
+.text             0x00060c        0x63e
+ .text            0x00060c        0x182 build/default/production/uart.o
+                  0x00060c                  _initUART1
+                  0x000626                  _WriteUART1_char
+                  0x00064e                  _WriteUART1_int
+                  0x0006ba                  _WriteUART1_string
+                  0x0006d6                  _initUART2
+                  0x0006ee                  _WriteUART2_char
+                  0x000706                  _WriteUART2_int
+                  0x000772                  _WriteUART2_string
+ .text            0x00078e        0x14a build/default/production/motor.o
+                  0x00078e                  _mot1_init_pwm
+                  0x0007aa                  _mot2_init_pwm
+                  0x0007c6                  _mot1_set_pwm
+                  0x0007d2                  _mot2_set_pwm
+                  0x0007de                  _init_motor
+                  0x0007f4                  _set_turbo
+                  0x000816                  _set_right
+                  0x00083c                  _set_left
+                  0x000862                  _set_backward
+                  0x000884                  _set_forward
+                  0x0008a6                  _set_stop_left_right
+                  0x0008b4                  _set_stop_forward_backward
+                  0x0008c2                  _set_stop
+ .text            0x0008d8        0x146 build/default/production/main.o
+                  0x0008d8                  _main
+ .text            0x000a1e         0xd0 build/default/production/timer.o
+                  0x000a1e                  _Init_T1
+                  0x000a3e                  _Delay_us
+                  0x000a58                  _reset_timer_us
+                  0x000a62                  _start_timer_us
+                  0x000a6a                  _stop_timer_us
+                  0x000a72                  _set_timer_interrupt_us
+                  0x000a84                  _start_measuring_time_us
+                  0x000a92                  _return_time_measurement_us
+                  0x000aa2                  _Init_T4
+                  0x000aba                  _start_timer_ms
+                  0x000ac2                  _stop_timer_ms
+                  0x000aca                  _Delay_ms
+                  0x000ae4                  _reset_timer_ms
+ .text            0x000aee         0xb2 build/default/production/adc.o
+                  0x000aee                  _ADCinit
+                  0x000b56                  _IR_read
+ .text            0x000ba0         0xaa build/default/production/sensor.o
+                  0x000ba0                  _init_forward_sensor
+                  0x000bac                  _init_left_sensor
+                  0x000bb8                  _get_forward_mm
+                  0x000bf4                  _get_left_mm
+                  0x000c2c                  _further_than
 
-.dinit            0x000b38          0x8
- .dinit           0x000b38          0x8 data_init
+.dinit            0x000c4a          0x8
+ .dinit           0x000c4a          0x8 data_init
