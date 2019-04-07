@@ -105,10 +105,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0xc04          0x1206  (4614)
 .const                       0xd04                0x60            0x90  (144)
-.text                        0xd64               0x852           0xc7b  (3195)
-.dinit                      0x15b6                0x74            0xae  (174)
+.text                        0xd64               0x860           0xc90  (3216)
+.dinit                      0x15c4                0x74            0xae  (174)
 
-                 Total "program" memory used (bytes):         0x1fbf  (8127) 16%
+                 Total "program" memory used (bytes):         0x1fd4  (8148) 16%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -204,67 +204,67 @@ External Symbols in Program Memory (by address):
                   0x000cf8                  ___mulsi3
                   0x000cf8                  ___mulp32eds3
                   0x000d64                  _main
-                  0x001000                  _initUART1
-                  0x00101a                  _WriteUART1_char
-                  0x001042                  _WriteUART1_int
-                  0x00105c                  _WriteUART1_intx10
-                  0x0010e8                  _WriteUART1_string
-                  0x001104                  _initUART2
-                  0x00111c                  _WriteUART2_char
-                  0x001134                  _WriteUART2_int
-                  0x0011a0                  _WriteUART2_string
-                  0x0011bc                  _mot1_init_pwm
-                  0x0011d8                  _mot2_init_pwm
-                  0x0011f4                  _mot1_set_pwm
-                  0x001200                  _mot2_set_pwm
-                  0x00120c                  _init_motor
-                  0x001222                  _set_turbo
-                  0x001244                  _set_left
-                  0x001286                  _set_right
-                  0x0012c8                  _set_backward
-                  0x00130a                  _set_forward
-                  0x00134c                  _set_stop
-                  0x001362                  _Init_T1
-                  0x001382                  _reset_timer_us
-                  0x00138c                  _start_timer_us
-                  0x001394                  _stop_timer_us
-                  0x00139c                  _set_timer_interrupt_us
-                  0x0013ac                  _start_measuring_time_us
-                  0x0013ba                  _return_time_measurement_us
-                  0x0013ca                  _Init_T4
-                  0x0013e2                  _start_timer_ms
-                  0x0013ea                  _stop_timer_ms
-                  0x0013f2                  _Delay_ms
-                  0x00140a                  _reset_timer_ms
-                  0x001414                  _Init_T5
-                  0x00142a                  _start_timer_5
-                  0x001432                  _stop_timer_5
-                  0x00143a                  _Delay_us
-                  0x001452                  _reset_timer_5
-                  0x00145c                  _ADCinit
-                  0x0014c4                  _IR_read
-                  0x00150c                  _init_forward_sensor
-                  0x001518                  _init_left_sensor
-                  0x001524                  _get_forward_mm
-                  0x001560                  _get_left_mm
-                  0x001598                  _further_than
+                  0x00100e                  _initUART1
+                  0x001028                  _WriteUART1_char
+                  0x001050                  _WriteUART1_int
+                  0x00106a                  _WriteUART1_intx10
+                  0x0010f6                  _WriteUART1_string
+                  0x001112                  _initUART2
+                  0x00112a                  _WriteUART2_char
+                  0x001142                  _WriteUART2_int
+                  0x0011ae                  _WriteUART2_string
+                  0x0011ca                  _mot1_init_pwm
+                  0x0011e6                  _mot2_init_pwm
+                  0x001202                  _mot1_set_pwm
+                  0x00120e                  _mot2_set_pwm
+                  0x00121a                  _init_motor
+                  0x001230                  _set_turbo
+                  0x001252                  _set_left
+                  0x001294                  _set_right
+                  0x0012d6                  _set_backward
+                  0x001318                  _set_forward
+                  0x00135a                  _set_stop
+                  0x001370                  _Init_T1
+                  0x001390                  _reset_timer_us
+                  0x00139a                  _start_timer_us
+                  0x0013a2                  _stop_timer_us
+                  0x0013aa                  _set_timer_interrupt_us
+                  0x0013ba                  _start_measuring_time_us
+                  0x0013c8                  _return_time_measurement_us
+                  0x0013d8                  _Init_T4
+                  0x0013f0                  _start_timer_ms
+                  0x0013f8                  _stop_timer_ms
+                  0x001400                  _Delay_ms
+                  0x001418                  _reset_timer_ms
+                  0x001422                  _Init_T5
+                  0x001438                  _start_timer_5
+                  0x001440                  _stop_timer_5
+                  0x001448                  _Delay_us
+                  0x001460                  _reset_timer_5
+                  0x00146a                  _ADCinit
+                  0x0014d2                  _IR_read
+                  0x00151a                  _init_forward_sensor
+                  0x001526                  _init_left_sensor
+                  0x001532                  _get_forward_mm
+                  0x00156e                  _get_left_mm
+                  0x0015a6                  _further_than
 
 External Symbols in Program Memory (by name):
 
-                  0x00145c                  _ADCinit
-                  0x0013f2                  _Delay_ms
-                  0x00143a                  _Delay_us
-                  0x0014c4                  _IR_read
-                  0x001362                  _Init_T1
-                  0x0013ca                  _Init_T4
-                  0x001414                  _Init_T5
-                  0x00101a                  _WriteUART1_char
-                  0x001042                  _WriteUART1_int
-                  0x00105c                  _WriteUART1_intx10
-                  0x0010e8                  _WriteUART1_string
-                  0x00111c                  _WriteUART2_char
-                  0x001134                  _WriteUART2_int
-                  0x0011a0                  _WriteUART2_string
+                  0x00146a                  _ADCinit
+                  0x001400                  _Delay_ms
+                  0x001448                  _Delay_us
+                  0x0014d2                  _IR_read
+                  0x001370                  _Init_T1
+                  0x0013d8                  _Init_T4
+                  0x001422                  _Init_T5
+                  0x001028                  _WriteUART1_char
+                  0x001050                  _WriteUART1_int
+                  0x00106a                  _WriteUART1_intx10
+                  0x0010f6                  _WriteUART1_string
+                  0x00112a                  _WriteUART2_char
+                  0x001142                  _WriteUART2_int
+                  0x0011ae                  _WriteUART2_string
                   0x000294                  __DefaultInterrupt
                   0x0001c8                  __T1Interrupt
                   0x0001e2                  __T2Interrupt
@@ -297,37 +297,37 @@ External Symbols in Program Memory (by name):
                   0x000100                  __resetPRI
                   0x000646                  __sprintf_cdnopuxX
                   0x000684                  __vfprintf_cdnopuxX
-                  0x001598                  _further_than
-                  0x001524                  _get_forward_mm
-                  0x001560                  _get_left_mm
-                  0x001000                  _initUART1
-                  0x001104                  _initUART2
-                  0x00150c                  _init_forward_sensor
-                  0x001518                  _init_left_sensor
-                  0x00120c                  _init_motor
+                  0x0015a6                  _further_than
+                  0x001532                  _get_forward_mm
+                  0x00156e                  _get_left_mm
+                  0x00100e                  _initUART1
+                  0x001112                  _initUART2
+                  0x00151a                  _init_forward_sensor
+                  0x001526                  _init_left_sensor
+                  0x00121a                  _init_motor
                   0x000d64                  _main
-                  0x0011bc                  _mot1_init_pwm
-                  0x0011f4                  _mot1_set_pwm
-                  0x0011d8                  _mot2_init_pwm
-                  0x001200                  _mot2_set_pwm
-                  0x001452                  _reset_timer_5
-                  0x00140a                  _reset_timer_ms
-                  0x001382                  _reset_timer_us
-                  0x0013ba                  _return_time_measurement_us
-                  0x0012c8                  _set_backward
-                  0x00130a                  _set_forward
-                  0x001244                  _set_left
-                  0x001286                  _set_right
-                  0x00134c                  _set_stop
-                  0x00139c                  _set_timer_interrupt_us
-                  0x001222                  _set_turbo
-                  0x0013ac                  _start_measuring_time_us
-                  0x00142a                  _start_timer_5
-                  0x0013e2                  _start_timer_ms
-                  0x00138c                  _start_timer_us
-                  0x001432                  _stop_timer_5
-                  0x0013ea                  _stop_timer_ms
-                  0x001394                  _stop_timer_us
+                  0x0011ca                  _mot1_init_pwm
+                  0x001202                  _mot1_set_pwm
+                  0x0011e6                  _mot2_init_pwm
+                  0x00120e                  _mot2_set_pwm
+                  0x001460                  _reset_timer_5
+                  0x001418                  _reset_timer_ms
+                  0x001390                  _reset_timer_us
+                  0x0013c8                  _return_time_measurement_us
+                  0x0012d6                  _set_backward
+                  0x001318                  _set_forward
+                  0x001252                  _set_left
+                  0x001294                  _set_right
+                  0x00135a                  _set_stop
+                  0x0013aa                  _set_timer_interrupt_us
+                  0x001230                  _set_turbo
+                  0x0013ba                  _start_measuring_time_us
+                  0x001438                  _start_timer_5
+                  0x0013f0                  _start_timer_ms
+                  0x00139a                  _start_timer_us
+                  0x001440                  _stop_timer_5
+                  0x0013f8                  _stop_timer_ms
+                  0x0013a2                  _stop_timer_us
 
 Memory Configuration
 
@@ -540,14 +540,14 @@ userdata
  .debug_abbrev    0x000485         0xc9 build/default/production/sensor.o
  .debug_abbrev    0x00054e         0xed build/default/production/adc.o
 
-.debug_line       0x000000        0x752
+.debug_line       0x000000        0x757
  *(.debug_line)
- .debug_line      0x000000        0x1b6 build/default/production/main.o
- .debug_line      0x0001b6        0x11c build/default/production/uart.o
- .debug_line      0x0002d2        0x144 build/default/production/motor.o
- .debug_line      0x000416        0x134 build/default/production/timer.o
- .debug_line      0x00054a         0xfe build/default/production/sensor.o
- .debug_line      0x000648        0x10a build/default/production/adc.o
+ .debug_line      0x000000        0x1bb build/default/production/main.o
+ .debug_line      0x0001bb        0x11c build/default/production/uart.o
+ .debug_line      0x0002d7        0x144 build/default/production/motor.o
+ .debug_line      0x00041b        0x134 build/default/production/timer.o
+ .debug_line      0x00054f         0xfe build/default/production/sensor.o
+ .debug_line      0x00064d        0x10a build/default/production/adc.o
 
 .debug_frame      0x000000        0x68a
  *(.debug_frame)
@@ -1449,58 +1449,58 @@ __c30_signature
  .const             0x8d04         0x5c build/default/production/main.o
  .const             0x8d60          0x4 build/default/production/uart.o
 
-.text             0x000d64        0x852
- .text            0x000d64        0x29c build/default/production/main.o
+.text             0x000d64        0x860
+ .text            0x000d64        0x2aa build/default/production/main.o
                   0x000d64                  _main
- .text            0x001000        0x1bc build/default/production/uart.o
-                  0x001000                  _initUART1
-                  0x00101a                  _WriteUART1_char
-                  0x001042                  _WriteUART1_int
-                  0x00105c                  _WriteUART1_intx10
-                  0x0010e8                  _WriteUART1_string
-                  0x001104                  _initUART2
-                  0x00111c                  _WriteUART2_char
-                  0x001134                  _WriteUART2_int
-                  0x0011a0                  _WriteUART2_string
- .text            0x0011bc        0x1a6 build/default/production/motor.o
-                  0x0011bc                  _mot1_init_pwm
-                  0x0011d8                  _mot2_init_pwm
-                  0x0011f4                  _mot1_set_pwm
-                  0x001200                  _mot2_set_pwm
-                  0x00120c                  _init_motor
-                  0x001222                  _set_turbo
-                  0x001244                  _set_left
-                  0x001286                  _set_right
-                  0x0012c8                  _set_backward
-                  0x00130a                  _set_forward
-                  0x00134c                  _set_stop
- .text            0x001362         0xfa build/default/production/timer.o
-                  0x001362                  _Init_T1
-                  0x001382                  _reset_timer_us
-                  0x00138c                  _start_timer_us
-                  0x001394                  _stop_timer_us
-                  0x00139c                  _set_timer_interrupt_us
-                  0x0013ac                  _start_measuring_time_us
-                  0x0013ba                  _return_time_measurement_us
-                  0x0013ca                  _Init_T4
-                  0x0013e2                  _start_timer_ms
-                  0x0013ea                  _stop_timer_ms
-                  0x0013f2                  _Delay_ms
-                  0x00140a                  _reset_timer_ms
-                  0x001414                  _Init_T5
-                  0x00142a                  _start_timer_5
-                  0x001432                  _stop_timer_5
-                  0x00143a                  _Delay_us
-                  0x001452                  _reset_timer_5
- .text            0x00145c         0xb0 build/default/production/adc.o
-                  0x00145c                  _ADCinit
-                  0x0014c4                  _IR_read
- .text            0x00150c         0xaa build/default/production/sensor.o
-                  0x00150c                  _init_forward_sensor
-                  0x001518                  _init_left_sensor
-                  0x001524                  _get_forward_mm
-                  0x001560                  _get_left_mm
-                  0x001598                  _further_than
+ .text            0x00100e        0x1bc build/default/production/uart.o
+                  0x00100e                  _initUART1
+                  0x001028                  _WriteUART1_char
+                  0x001050                  _WriteUART1_int
+                  0x00106a                  _WriteUART1_intx10
+                  0x0010f6                  _WriteUART1_string
+                  0x001112                  _initUART2
+                  0x00112a                  _WriteUART2_char
+                  0x001142                  _WriteUART2_int
+                  0x0011ae                  _WriteUART2_string
+ .text            0x0011ca        0x1a6 build/default/production/motor.o
+                  0x0011ca                  _mot1_init_pwm
+                  0x0011e6                  _mot2_init_pwm
+                  0x001202                  _mot1_set_pwm
+                  0x00120e                  _mot2_set_pwm
+                  0x00121a                  _init_motor
+                  0x001230                  _set_turbo
+                  0x001252                  _set_left
+                  0x001294                  _set_right
+                  0x0012d6                  _set_backward
+                  0x001318                  _set_forward
+                  0x00135a                  _set_stop
+ .text            0x001370         0xfa build/default/production/timer.o
+                  0x001370                  _Init_T1
+                  0x001390                  _reset_timer_us
+                  0x00139a                  _start_timer_us
+                  0x0013a2                  _stop_timer_us
+                  0x0013aa                  _set_timer_interrupt_us
+                  0x0013ba                  _start_measuring_time_us
+                  0x0013c8                  _return_time_measurement_us
+                  0x0013d8                  _Init_T4
+                  0x0013f0                  _start_timer_ms
+                  0x0013f8                  _stop_timer_ms
+                  0x001400                  _Delay_ms
+                  0x001418                  _reset_timer_ms
+                  0x001422                  _Init_T5
+                  0x001438                  _start_timer_5
+                  0x001440                  _stop_timer_5
+                  0x001448                  _Delay_us
+                  0x001460                  _reset_timer_5
+ .text            0x00146a         0xb0 build/default/production/adc.o
+                  0x00146a                  _ADCinit
+                  0x0014d2                  _IR_read
+ .text            0x00151a         0xaa build/default/production/sensor.o
+                  0x00151a                  _init_forward_sensor
+                  0x001526                  _init_left_sensor
+                  0x001532                  _get_forward_mm
+                  0x00156e                  _get_left_mm
+                  0x0015a6                  _further_than
 
-.dinit            0x0015b6         0x74
- .dinit           0x0015b6         0x74 data_init
+.dinit            0x0015c4         0x74
+ .dinit           0x0015c4         0x74 data_init

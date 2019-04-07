@@ -108,7 +108,9 @@ int main(void){
     initUART2();
     WriteUART1_string("start ");
     
-    //ADCinit();
+#ifdef ADC_H
+    ADCinit();
+#endif
     init_motor();
     mot1_init_pwm();
     mot2_init_pwm();
@@ -121,10 +123,13 @@ int main(void){
     Init_T5();
     init_forward_sensor();
     init_left_sensor();
-
+    
     unsigned int forward_distance_mm = 0;
     unsigned int left_distance_mm = 0;
-    //unsigned int forward_distance_ir = 0;
+#ifdef ADC_H
+    unsigned int forward_distance_ir = 0;
+#endif
+
     unsigned int aligned = 1;
     int i = 0;
         
@@ -135,15 +140,21 @@ int main(void){
      
         forward_distance_mm = 0;
         left_distance_mm = 0;
-        //forward_distance_ir = 0;
+#ifdef ADC_H
+        forward_distance_ir = 0;
+#endif
         for (i=0;i<TIMES_MEASURED;++i){
             forward_distance_mm += get_forward_mm();//*10;
             left_distance_mm += get_left_mm();//*10;
-            //forward_distance_ir += IR_read();
+#ifdef ADC_H
+            forward_distance_ir += IR_read();
+#endif
         }
         forward_distance_mm /= TIMES_MEASURED;
         left_distance_mm /= TIMES_MEASURED;
-        //forward_distance_ir /= TIMES_MEASURED;
+#ifdef ADC_H
+        forward_distance_ir /= TIMES_MEASURED;
+#endif
         
         WriteUART1_string("LEVO:");
         WriteUART1_int(left_distance_mm);
@@ -151,6 +162,11 @@ int main(void){
         WriteUART1_string("DALJ:");
         WriteUART1_int(forward_distance_mm);
         WriteUART1_string("mm. ");
+#ifdef ADC_H
+        WriteUART1_string("IR:");
+        WriteUART1_int(forward_distance_mm);
+        WriteUART1_string("cm. ");
+#endif
 
         /*******************************************/     
 
@@ -164,7 +180,7 @@ int main(void){
             
             set_left();
             Delay_ms(ROT_TIME_30_DEGREE);
-            set_right();
+            set_stop();
             Delay_ms(STOP_TIME);
             curr = get_left_mm();
             if (curr < minv) {
@@ -172,9 +188,9 @@ int main(void){
                 minv = curr;
             }
             
-            //set_left();
+            set_left();
             Delay_ms(ROT_TIME_30_DEGREE); 
-            set_right();
+            set_stop();
             Delay_ms(STOP_TIME);
             curr = get_left_mm();
             if (curr < minv) {
@@ -184,7 +200,7 @@ int main(void){
             
             set_right();
             Delay_ms(ROT_TIME_90_DEGREE);
-            set_left();
+            set_stop();
             Delay_ms(STOP_TIME);
             curr = get_left_mm();
             if (curr < minv) {
@@ -194,7 +210,7 @@ int main(void){
             
             set_right();
             Delay_ms(ROT_TIME_30_DEGREE); 
-            set_left();
+            set_stop();
             Delay_ms(STOP_TIME);
             curr = get_left_mm();
             if (curr < minv) {
@@ -202,37 +218,40 @@ int main(void){
                 minv = curr;
             }
             
+            if (curr > RIGHT_CRIT)
+                degree = 0;
+            
             switch(degree){
                 case 30:
                     set_left();
                     Delay_ms(ROT_TIME_30_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     break;
                 case 0:
                     set_left();
                     Delay_ms(ROT_TIME_30_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     set_left();
                     Delay_ms(ROT_TIME_30_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     break;
                 case -30:
                     set_left();
                     Delay_ms(ROT_TIME_90_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     break;
                 case -60:
                     set_left();
                     Delay_ms(ROT_TIME_90_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     set_left();
                     Delay_ms(ROT_TIME_30_DEGREE);
-                    set_right();
+                    set_stop();
                     Delay_ms(STOP_TIME);
                     break;  
                 case 60:
