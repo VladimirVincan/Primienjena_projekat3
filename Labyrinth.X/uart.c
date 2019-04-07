@@ -21,7 +21,17 @@ void WriteUART1_char(unsigned int data)
 
 void WriteUART1_int(unsigned int data)
 {
+    char str[6];
+    sprintf(str,"%d",data);
+    WriteUART1_string(str);
+}
+
+void WriteUART1_intx10(unsigned int data)
+{
 	unsigned char temp;
+    temp=data/10000;
+	WriteUART1_char(temp+'0');
+	data=data-temp*10000;
 	temp=data/1000;
 	WriteUART1_char(temp+'0');
 	data=data-temp*1000;
@@ -33,6 +43,7 @@ void WriteUART1_int(unsigned int data)
 	data=data-temp*10;
 	WriteUART1_char(data+'0');
 }
+
 
 void WriteUART1_string(register const char *s){
     while(*s)

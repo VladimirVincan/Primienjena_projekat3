@@ -184,7 +184,6 @@ IEC0bits.ADIE=1;
 }
 
 unsigned int IR_read(void){
-    ADCON1bits.ADON=1;
     return (int)(434.6785 - (float)(0.3290651*adc_reg) + (float)(0.00006473399*adc_reg*adc_reg));
 }
 

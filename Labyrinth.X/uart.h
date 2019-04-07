@@ -13,12 +13,14 @@ extern "C" {
 #endif
     
 #include <p30fxxxx.h>
+#include <stdio.h>
 #define BAUD_RATE_1200 0x0207
 #define BAUD_RATE_9600 0x0040
 
 void initUART1(void);
 void WriteUART1_char(unsigned int data);
 void WriteUART1_int(unsigned int data);
+void WriteUART1_intx10(unsigned int data);
 void WriteUART1_string(register const char *str);
 
 void initUART2(void);

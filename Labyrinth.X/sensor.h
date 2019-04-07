@@ -45,6 +45,13 @@ extern "C" {
 #define MAX_HIGH_TIME 1500
 #define SENSOR_ERROR 35
     
+#define FORWARD_DIST 300
+#define FORWARD_CRIT 150
+#define LEFT_DIST 150
+#define RIGHT_DIST 300
+#define RIGHT_CRIT 350
+#define ROTATION_ERROR 4000
+    
 void init_forward_sensor(void);
 void init_left_sensor(void);
 

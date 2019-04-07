@@ -3,5 +3,4 @@ main.c  \
 motor.h  \
 uart.h  \
 sensor.h  \
-timer.h  \
- adc.h 
+timer.h 

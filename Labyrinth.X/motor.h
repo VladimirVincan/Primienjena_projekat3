@@ -39,6 +39,12 @@ extern "C" {
 #define PWM_MIN 0
 #define PWM_MID 2499    
 #define PWM_MAX 2499
+    
+#define ROT_TIME_90_DEGREE 1410
+#define ROT_TIME_30_DEGREE 450
+#define FORWARD_TIME 1000
+#define BACKWARD_TIME 600
+#define STOP_TIME 100
 
 void mot1_init_pwm();
 void mot2_init_pwm();
