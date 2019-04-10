@@ -13,13 +13,14 @@ extern "C" {
 #endif
 
 #include<p30fxxxx.h>
+#include"sensor.h"
 
 extern unsigned int adc_reg;    
     
 //void ADCinit_analog(void);
 void ADCinit(void);
 unsigned int IR_read(void);
-
+unsigned int IR_read_avg(void);
 
 #ifdef	__cplusplus
 }

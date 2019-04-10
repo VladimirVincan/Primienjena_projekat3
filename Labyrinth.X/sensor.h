@@ -44,12 +44,13 @@ extern "C" {
 #define MAX_LOW_TIME 1500
 #define MAX_HIGH_TIME 1500
 #define SENSOR_ERROR 35
+#define TIMES_MEASURED 1
     
-#define FORWARD_DIST 300
-#define FORWARD_CRIT 150
-#define LEFT_DIST 150
-#define RIGHT_DIST 300
-#define RIGHT_CRIT 350
+#define FORWARD_DIST 250
+#define FORWARD_CRIT 100
+#define LEFT_DIST 100
+#define RIGHT_DIST 200
+#define RIGHT_CRIT 300
 #define ROTATION_ERROR 4000
     
 void init_forward_sensor(void);
@@ -57,6 +58,8 @@ void init_left_sensor(void);
 
 unsigned int get_forward_mm(void);
 unsigned int get_left_mm(void);
+unsigned int get_forward_avg_mm(void);
+unsigned int get_left_avg_mm(void);
 unsigned int further_than(unsigned int compare_mm, unsigned int measured_mm);
 
 #ifdef	__cplusplus

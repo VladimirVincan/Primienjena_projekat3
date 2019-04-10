@@ -10,7 +10,6 @@ _FOSC(CSW_FSCM_OFF & XT_PLL4);
 _FWDT(WDT_OFF);
 
 #define MAX_TIMER_VAL 32000
-#define TIMES_MEASURED 1
 
 unsigned char tempRX, tempRX2;
 unsigned int broj1,broj2;
@@ -129,31 +128,16 @@ int main(void){
 #ifdef ADC_H
     unsigned int forward_distance_ir = 0;
 #endif
-
-    unsigned int aligned = 1;
-    int i = 0;
         
 	while(1)
 	{
         WriteUART1_char(10);
         WriteUART1_char(13);
      
-        forward_distance_mm = 0;
-        left_distance_mm = 0;
+        forward_distance_mm = get_forward_avg_mm();
+        left_distance_mm = get_left_avg_mm();
 #ifdef ADC_H
-        forward_distance_ir = 0;
-#endif
-        for (i=0;i<TIMES_MEASURED;++i){
-            forward_distance_mm += get_forward_mm();//*10;
-            left_distance_mm += get_left_mm();//*10;
-#ifdef ADC_H
-            forward_distance_ir += IR_read();
-#endif
-        }
-        forward_distance_mm /= TIMES_MEASURED;
-        left_distance_mm /= TIMES_MEASURED;
-#ifdef ADC_H
-        forward_distance_ir /= TIMES_MEASURED;
+        forward_distance_ir = IR_read_avg();
 #endif
         
         WriteUART1_string("LEVO:");
@@ -168,182 +152,105 @@ int main(void){
         WriteUART1_string("cm. ");
 #endif
 
-        /*******************************************/     
-
+        /*******************************************/ 
+        
+        
 #define TACTIC
 #ifdef TACTIC
-        // the sensor is at 45 deg from surface - doesn't read correctly
-        if (left_distance_mm >= ROTATION_ERROR && !aligned) { 
-            aligned = 1;
-            int degree = 0, minv = left_distance_mm, curr = 0;
-            WriteUART1_string("error. ");
-            
-            set_left();
-            Delay_ms(ROT_TIME_30_DEGREE);
-            set_stop();
-            Delay_ms(STOP_TIME);
-            curr = get_left_mm();
-            if (curr < minv) {
-                degree = -30;
-                minv = curr;
-            }
-            
-            set_left();
-            Delay_ms(ROT_TIME_30_DEGREE); 
-            set_stop();
-            Delay_ms(STOP_TIME);
-            curr = get_left_mm();
-            if (curr < minv) {
-                degree = -60;
-                minv = curr;
-            }
-            
-            set_right();
-            Delay_ms(ROT_TIME_90_DEGREE);
-            set_stop();
-            Delay_ms(STOP_TIME);
-            curr = get_left_mm();
-            if (curr < minv) {
-                degree = 30;
-                minv = curr;
-            }
-            
-            set_right();
-            Delay_ms(ROT_TIME_30_DEGREE); 
-            set_stop();
-            Delay_ms(STOP_TIME);
-            curr = get_left_mm();
-            if (curr < minv) {
-                degree = 60;
-                minv = curr;
-            }
-            
-            if (curr > RIGHT_CRIT)
-                degree = 0;
-            
-            switch(degree){
-                case 30:
-                    set_left();
-                    Delay_ms(ROT_TIME_30_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    break;
-                case 0:
-                    set_left();
-                    Delay_ms(ROT_TIME_30_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    set_left();
-                    Delay_ms(ROT_TIME_30_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    break;
-                case -30:
-                    set_left();
-                    Delay_ms(ROT_TIME_90_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    break;
-                case -60:
-                    set_left();
-                    Delay_ms(ROT_TIME_90_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    set_left();
-                    Delay_ms(ROT_TIME_30_DEGREE);
-                    set_stop();
-                    Delay_ms(STOP_TIME);
-                    break;  
-                case 60:
-                default:
-                    break;
-            }
-        }
-        // object ahead. go back
-        else if (forward_distance_mm <= FORWARD_CRIT) {
-            aligned = 0;
+        
+        // too close to object. go back
+        if (forward_distance_mm <= FORWARD_CRIT) {
             WriteUART1_string("back. ");
-            set_backward();
-            Delay_ms(BACKWARD_TIME);
             
-            set_forward();
+            set_backward();
+            while (get_forward_avg_mm() <= FORWARD_CRIT);
+            set_stop();
             Delay_ms(STOP_TIME);
         }
-        // nothing detected. go left 90 degrees and continue forward
-        else if (FORWARD_DIST < forward_distance_mm && RIGHT_CRIT < left_distance_mm) {
-            aligned = 0;
-            WriteUART1_string("left. ");
-            set_left();
-            Delay_ms(ROT_TIME_90_DEGREE);
+        // object in front. rotate 90 degree clockwise.
+        if (forward_distance_mm <= FORWARD_DIST) {
+            WriteUART1_string("right. ");
             
-            set_right();
+            set_right(); start_measuring_time_ms();
+            while (get_forward_avg_mm() < FORWARD_DIST);
+            while (RIGHT_CRIT < get_left_avg_mm() && return_time_measurement_ms() < MAX_ROT_TIME);
+            set_stop(); stop_timer_ms();
             Delay_ms(STOP_TIME);
+            
+            /*mot_set_pwm(PWM_ROT);
+            if (return_time_measurement_ms()){
+                unsigned int minv = 0xffff;
+                unsigned int curr = get_left_avg_mm();
+                set_right();
+                while(curr < minv) {
+                    WriteUART1_char(10);
+                    WriteUART1_char(13);
+                    WriteUART1_int(curr);
+                    minv = curr;
+                    curr = get_forward_avg_mm();
+                }
+                set_stop();
+                Delay_ms(STOP_TIME);
+            }
+            mot_set_pwm(PWM_MID);*/
+        }
+        
+        // nothing nearby. rotate 90 degrees counterclockwise and continue forward
+        else if (FORWARD_DIST < forward_distance_mm && RIGHT_CRIT < left_distance_mm) {
+            WriteUART1_string("left. ");
             
             set_forward();
             Delay_ms(FORWARD_TIME);
+            set_stop();
+            Delay_ms(STOP_TIME);
             
-            set_backward();
+            set_left();
+            Delay_ms(ROT_TIME_90_DEGREE);
+            set_stop();
+            Delay_ms(STOP_TIME);
+            
+            set_forward(); start_measuring_time_ms();
+            while (FORWARD_DIST < get_forward_avg_mm() && RIGHT_CRIT < get_left_avg_mm() && return_time_measurement_ms() < MAX_FORW_TIME);  
+            set_stop(); stop_timer_ms();
             Delay_ms(STOP_TIME);
         }
         // perfectly aligned. go forward
-        else if (FORWARD_DIST < forward_distance_mm && LEFT_DIST < left_distance_mm && left_distance_mm <= RIGHT_DIST) {
-            aligned = 0;
+        else if (FORWARD_DIST <= forward_distance_mm && LEFT_DIST <= left_distance_mm && left_distance_mm <= RIGHT_DIST) {
             WriteUART1_string("forward. ");
-            set_forward();
-            Delay_ms(FORWARD_TIME);   
             
-            set_backward();
-            Delay_ms(STOP_TIME);
+            set_forward();
         }
-        
         // go slight to the right
         else if (left_distance_mm <= LEFT_DIST) {
-            aligned = 0;
             WriteUART1_string("slightRight. ");
+            
             set_right();
             Delay_ms(ROT_TIME_30_DEGREE);
-            
-            set_left();
+            set_stop();
             Delay_ms(STOP_TIME);
             
             set_forward();
             Delay_ms(FORWARD_TIME);
-            
-            set_backward();
+            set_stop();
             Delay_ms(STOP_TIME);
         }
         // go slight to the left
-        else if (RIGHT_DIST < left_distance_mm && left_distance_mm <= RIGHT_CRIT) {
-            aligned = 0;
+        else if (RIGHT_DIST <= left_distance_mm && left_distance_mm <= RIGHT_CRIT) {
             WriteUART1_string("slightlEFT. ");
+            
             set_left();
             Delay_ms(ROT_TIME_30_DEGREE);
-            
-            set_right();
+            set_stop();
             Delay_ms(STOP_TIME);
             
             set_forward();
             Delay_ms(FORWARD_TIME);
-            
-            set_backward();
+            set_stop();
             Delay_ms(STOP_TIME);
-        }
-        // go right 90 degrees
-        else if (forward_distance_mm < RIGHT_DIST) {
-            aligned = 0;
-            WriteUART1_string("right. ");
-            set_right();
-            Delay_ms(ROT_TIME_90_DEGREE);
-            
-            set_left();
-            Delay_ms(STOP_TIME);
-        }
+        } // end if
         
-        set_stop();
         WriteUART1_char(tempRX);
-        //Delay_ms(300);
 #endif //TACTIC
-
     } // while
     return 0;
 } // main

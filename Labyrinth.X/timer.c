@@ -82,6 +82,16 @@ void reset_timer_ms(void){
     timer_ms = 0;
 }
 
+void start_measuring_time_ms(){
+    reset_timer_ms();
+    delay_ms = 0;
+    start_timer_ms();
+}
+
+unsigned int return_time_measurement_ms(){
+    return TMR4;
+}
+
 /*********************************/
 
 void Init_T5(void){

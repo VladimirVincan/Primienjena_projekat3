@@ -35,6 +35,8 @@ void Delay_ms (unsigned int time_ms); // utilized with T4
 void start_timer_ms(void);
 void stop_timer_ms(void);
 void reset_timer_ms(void);
+void start_measuring_time_ms();
+unsigned int return_time_measurement_ms();
 
 void Init_T5(void);
 void Delay_us (unsigned int time_us); // utilized with T5

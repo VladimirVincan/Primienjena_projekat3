@@ -30,7 +30,16 @@ unsigned int get_forward_mm(void){
     start_measuring_time_us();
     while (SENSOR_FORWARD_ECHO_PORT == 1); //TODO: && read_timer_us() <= MAX_HIGH_TIME);
     
-    return return_time_measurement_us() / 9.11;
+    return return_time_measurement_us() * 10 / 9.11;
+}
+
+unsigned int get_forward_avg_mm(void){
+    int i;
+    unsigned int forward_distance_mm=0;
+    for (i=0;i<TIMES_MEASURED;++i)
+            forward_distance_mm += get_forward_mm();
+    forward_distance_mm /= TIMES_MEASURED;
+    return forward_distance_mm;
 }
 
 unsigned int get_left_mm(void){
@@ -43,7 +52,16 @@ unsigned int get_left_mm(void){
     start_measuring_time_us();
     while (SENSOR_LEFT_ECHO_PORT == 1); //TODO: && read_timer_us() <= MAX_HIGH_TIME);
     
-    return return_time_measurement_us() / 9.11;//58;
+    return return_time_measurement_us() * 10 / 9.11;//58;
+}
+
+unsigned int get_left_avg_mm(void){
+    int i;
+    unsigned int left_distance_mm=0;
+    for (i=0;i<TIMES_MEASURED;++i)
+            left_distance_mm += get_left_mm();
+    left_distance_mm /= TIMES_MEASURED;
+    return left_distance_mm;
 }
 
 unsigned int further_than(unsigned int compare_mm, unsigned int measured_mm){

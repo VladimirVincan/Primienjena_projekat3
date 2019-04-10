@@ -187,6 +187,16 @@ unsigned int IR_read(void){
     return (int)(434.6785 - (float)(0.3290651*adc_reg) + (float)(0.00006473399*adc_reg*adc_reg));
 }
 
+unsigned int IR_read_avg(void){
+    int i;
+    unsigned int ir_distance_mm=0;
+    for (i=0;i<TIMES_MEASURED;++i)
+            ir_distance_mm += IR_read();
+    ir_distance_mm /= TIMES_MEASURED;
+    return ir_distance_mm;
+}
+
+
 
 
 

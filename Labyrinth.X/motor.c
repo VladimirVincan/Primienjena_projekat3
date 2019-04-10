@@ -39,6 +39,13 @@ void mot2_set_pwm(int duty)
     OC2RS = duty;
 }
 
+void mot_set_pwm(int duty)
+{
+    mot1_set_pwm(duty);
+    mot2_set_pwm(duty);
+    
+}
+
 /***********************************************/
 /*
  * MOVEMENT
