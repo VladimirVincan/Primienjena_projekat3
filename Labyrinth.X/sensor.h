@@ -50,7 +50,7 @@ extern "C" {
 #define FORWARD_CRIT 100
 #define LEFT_DIST 100
 #define RIGHT_DIST 200
-#define RIGHT_CRIT 300
+#define RIGHT_CRIT 600
 #define ROTATION_ERROR 4000
     
 void init_forward_sensor(void);

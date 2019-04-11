@@ -74,61 +74,7 @@ void set_turbo()
         mot2_set_pwm(PWM_MAX);
     }
 }
-/*
-void set_right()
-{
-    if (MOT_IN1_LAT == 0 || MOT_IN2_LAT == 1) {
-        mot1_set_pwm(PWM_MIN);
-        MOT_IN1_LAT = 1;
-        MOT_IN2_LAT = 0;
-        mot1_set_pwm(PWM_MAX);
-    } 
-}
 
-void set_left()
-{
-    if (MOT_IN1_LAT == 1 || MOT_IN2_LAT == 0) {
-        mot1_set_pwm(PWM_MIN);
-        MOT_IN1_LAT = 0;
-        MOT_IN2_LAT = 1;
-        mot1_set_pwm(PWM_MAX);
-    }
-}
-
-void set_backward()
-{
-    if (MOT_IN3_LAT == 0 || MOT_IN4_LAT == 1) {
-        mot2_set_pwm(PWM_MIN);
-        MOT_IN3_LAT = 1;
-        MOT_IN4_LAT = 0;
-        mot2_set_pwm(PWM_MID);
-    }
-}
-
-void set_forward()
-{
-    if (MOT_IN3_LAT == 1 || MOT_IN4_LAT == 0) {
-        mot2_set_pwm(PWM_MIN);
-        MOT_IN3_LAT = 0;
-        MOT_IN4_LAT = 1;
-        mot2_set_pwm(PWM_MID);
-    }
-}
-
-void set_stop_left_right()
-{
-    mot1_set_pwm(PWM_MIN);
-    MOT_IN1_LAT = 0;
-    MOT_IN2_LAT = 0;
-}
-
-void set_stop_forward_backward()
-{
-    mot1_set_pwm(PWM_MIN);
-    MOT_IN1_LAT = 0;
-    MOT_IN2_LAT = 0;
-}
-*/
 void set_left()
 {
     if (!(MOT_IN1_LAT == 1 && MOT_IN2_LAT == 0 && MOT_IN3_LAT == 1 && MOT_IN4_LAT == 0)) {

@@ -172,12 +172,13 @@ int main(void){
             WriteUART1_string("right. ");
             
             set_right(); start_measuring_time_ms();
+            // if (left_distance_mm < RIGHT_CRIT) while (get_left_avg_mm() < RIGHT_CRIT);else
             while (get_forward_avg_mm() < FORWARD_DIST);
             while (RIGHT_CRIT < get_left_avg_mm() && return_time_measurement_ms() < MAX_ROT_TIME);
             set_stop(); stop_timer_ms();
             Delay_ms(STOP_TIME);
             
-            /*mot_set_pwm(PWM_ROT);
+            mot_set_pwm(PWM_ROT);
             if (return_time_measurement_ms()){
                 unsigned int minv = 0xffff;
                 unsigned int curr = get_left_avg_mm();
@@ -192,7 +193,7 @@ int main(void){
                 set_stop();
                 Delay_ms(STOP_TIME);
             }
-            mot_set_pwm(PWM_MID);*/
+            mot_set_pwm(PWM_MID);
         }
         
         // nothing nearby. rotate 90 degrees counterclockwise and continue forward
@@ -200,7 +201,7 @@ int main(void){
             WriteUART1_string("left. ");
             
             set_forward();
-            Delay_ms(FORWARD_TIME);
+            Delay_ms(LEFT_METHOD_FORWARD_TIME);
             set_stop();
             Delay_ms(STOP_TIME);
             
@@ -230,7 +231,7 @@ int main(void){
             Delay_ms(STOP_TIME);
             
             set_forward();
-            Delay_ms(FORWARD_TIME);
+            Delay_ms(SHORT_FORWARD_TIME);
             set_stop();
             Delay_ms(STOP_TIME);
         }
@@ -244,7 +245,7 @@ int main(void){
             Delay_ms(STOP_TIME);
             
             set_forward();
-            Delay_ms(FORWARD_TIME);
+            Delay_ms(SHORT_FORWARD_TIME);
             set_stop();
             Delay_ms(STOP_TIME);
         } // end if
